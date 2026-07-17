@@ -38,6 +38,7 @@
         },
         "image_3H8VXn": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "overlay_opacity": 0,
             "highlight_text": "Oil Control",
@@ -63,6 +64,7 @@
         "image_rw94FY": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/benifit-sec-bg.webp",
             "overlay_opacity": 0,
             "highlight_text": "Pore Care",
             "highlight_text_icon": "star",
