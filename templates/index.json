@@ -105,6 +105,35 @@
         "padding_bottom": 0
       }
     },
+    "wheel-car": {
+      "type": "wheel-car",
+      "blocks": {
+        "product_1": {
+          "type": "product",
+          "settings": {}
+        },
+        "product_2": {
+          "type": "product",
+          "settings": {}
+        },
+        "product_3": {
+          "type": "product",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "product_1",
+        "product_2",
+        "product_3"
+      ],
+      "settings": {
+        "title": "<p>Discover Our Best <em>Products</em></p>",
+        "description": "<p>Explore our most popular items crafted with care and quality.</p>",
+        "button_label": "SHOP NOW",
+        "button_link": "/collections/all",
+        "animation_speed": 5
+      }
+    },
     "flexible_section_qLGCpK": {
       "type": "flexible-section",
       "blocks": {
@@ -2117,7 +2146,7 @@
     }
   },
   "order": [
-    "slideshow_yhq8kb",
+    "wheel-car",
     "flexible_section_qLGCpK",
     "product_tabs_AX9mcp",
     "collection_highlights_zUbL8r",

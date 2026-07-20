@@ -1,0 +1,560 @@
+
+{%- assign section_st = section.settings -%}
+
+<section class="yakchoo-hero" id="scroll-area">
+  <section class="banner-parallax-section" id="banner-parallax">
+    {% if section_st.parallax_left_desktop != blank %}
+      <img src="{{ section_st.parallax_left_desktop | image_url: width: 600 }}" id="banner-parallax-img1" class="banner-parallax-img" style="transform: translateX(0%);">
+    {% endif %}
+    {% if section_st.parallax_right_desktop != blank %}
+      <img src="{{ section_st.parallax_right_desktop | image_url: width: 600 }}" id="banner-parallax-img2" class="banner-parallax-img" style="transform: translateX(0%);">
+    {% endif %}
+    {% if section_st.parallax_center_desktop != blank %}
+      <img src="{{ section_st.parallax_center_desktop | image_url: width: 400 }}" id="banner-parallax-img3" class="banner-parallax-img" style="transform: translate(-50%, 40px) scale(0.9);">
+    {% endif %}
+  </section>
+
+  <section class="scroll-rotate-section">
+    <section class="banner-section">
+      <!-- TEXT SLIDER -->
+      <div class="banner-content-div">
+        <div class="banner-content-wrapper" id="text-slider" style="transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1); transform: translateY(-160px);">
+          <div class="banner-content">
+            <h3>Manifesting Health &amp; Happiness for our Furry Friends</h3>
+          </div>
+          <div class="banner-content">
+            <h3>Born in the Himalayas, Loved Everywhere</h3>
+          </div>
+          <div class="banner-content">
+            <h3>Yak Cheese Chews, Made in the Himalayas with Real Yak Milk</h3>
+          </div>
+        </div>
+      </div>
+      <a class="know-btn" id="knowMoreBtn" href="{{ section_st.button_link | default: '#' }}">{{ section_st.button_label }}</a>
+
+      <!-- PRODUCT WHEEL -->
+      <div class="banner-circle-box">
+        <div class="banner-circle" id="banner-circle">
+          {% for block in section.blocks %}
+            {% if block.type == 'product' %}
+              <div class="banner-item">
+                {% if block.settings.product_image %}
+                  <img src="{{ block.settings.product_image | image_url: width: 500 }}" alt="Product">
+                {% elsif forloop.index == 1 %}
+                  <img src="https://yakchoo.com/wp-content/themes/yakchu/img/banner-scroll-img1.webp" alt="Product">
+                  {% elsif forloop.index == 2 %}
+                  <img src="https://yakchoo.com/wp-content/themes/yakchu/img/banner-scroll-img2.webp" alt="Product">
+                  {%else %}
+                  <img src="https://yakchoo.com/wp-content/themes/yakchu/img/banner-scroll-img3.webp" alt="Product">
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </section>
+</section>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --font-heading: "Bebas Neue", sans-serif;
+    --font-body: "Montserrat", sans-serif;
+    --color-primary: #193d71;
+    --color-accent: #fee000;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: repeating-linear-gradient(90deg, #e2f4fc 0px, #e2f4fc 110px, #d2eef9 110px, #d2eef9 220px);
+    font-family: var(--font-body);
+    overscroll-behavior: none;
+  }
+
+  /* ============ PARALLAX BANNER ============ */
+  .banner-parallax-section {
+    height: 100vh;
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transition: height 1.8s cubic-bezier(0.77, 0, 0.175, 1);
+    will-change: height;
+  }
+
+  .banner-parallax-img {
+    position: absolute;
+    width: 100%;
+    transition: all 2s ease-in-out;
+    z-index: 0;
+  }
+
+  #banner-parallax-img1 {
+    height: 58vh;
+    left: 0;
+    bottom: 0;
+  }
+
+  #banner-parallax-img2 {
+    height: 54vh;
+    right: 0;
+    bottom: 0;
+  }
+
+  #banner-parallax-img3 {
+    width: auto;
+    height: 30vh;
+    left: 50%;
+    top: 10px;
+  }
+
+  /* ============ SCROLL ROTATE SECTION ============ */
+  .yakchoo-hero {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  #scroll-area {
+    height: 100vh;
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  .scroll-rotate-section {
+    position: relative;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  .banner-section {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 160px 0 0 0;
+  }
+  .scroll-rotate-section {
+  position: relative;
+  height: 100%;
+  overflow-x: hidden;
+  background-image: url('https://yakchoo.com/wp-content/themes/yakchu/img/banner-bg.webp');
+  background-attachment: fixed;  /* Keeps it fixed during scroll */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+  /* TEXT CONTENT */
+  .banner-content-div {
+    width: 420px;
+    height: 160px;
+    overflow: hidden;
+    z-index: 10;
+    margin-left: 0;
+  }
+
+  .banner-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease-out;
+  }
+
+  .banner-content {
+    height: 160px;
+    display: flex;
+    align-items: center;
+  }
+
+  .banner-content h2 {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.1;
+    text-align: left;
+    color: var(--color-primary);
+    max-width: 366px;
+    text-transform: uppercase;
+  }
+
+  /* BUTTON */
+  .know-btn {
+    padding: 15px 28px;
+    border-radius: 42px;
+    background-color: var(--color-primary);
+    font-family: var(--font-heading);
+    color: var(--color-accent);
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 600;
+    width: auto;
+    margin-top: 20px;
+    cursor: pointer;
+    position: relative;
+    z-index: 30;
+    transition: all 0.3s ease;
+    border: none;
+    display: inline-block;
+  }
+
+  .know-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(25, 61, 113, 0.2);
+  }
+
+  /* PRODUCT WHEEL */
+  .banner-circle-box {
+    width: 80vh;
+    height: 80vh;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -15%) scale(1.3);
+    perspective: 2000px;
+  }
+
+  .banner-circle {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-out;
+  }
+
+  .banner-item {
+    width: 80vh;
+    height: 80vh;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -40vh;
+    margin-top: -40vh;
+    overflow: hidden;
+    transition: transform 1s ease-out;
+  }
+
+  .banner-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1024px) {
+    .banner-circle-box {
+      width: 60vh;
+      height: 60vh;
+    }
+
+    .banner-item {
+      width: 60vh;
+      height: 60vh;
+      margin-left: -30vh;
+      margin-top: -30vh;
+    }
+
+    .banner-content h2 {
+      font-size: 36px;
+      max-width: 300px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .banner-section {
+      padding: 100px 0 0 0;
+    }
+
+    .banner-content-div {
+      width: 100%;
+      height: auto;
+      padding: 0 20px;
+    }
+
+    .banner-content {
+      height: auto;
+      min-height: 120px;
+    }
+
+    .banner-content h2 {
+      font-size: 28px;
+      max-width: 100%;
+    }
+
+    .know-btn {
+      margin-left: 20px;
+      margin-top: 15px;
+      padding: 12px 24px;
+      font-size: 14px;
+    }
+
+    .banner-circle-box {
+      width: 50vh;
+      height: 50vh;
+      top: 80%;
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    .banner-item {
+      width: 50vh;
+      height: 50vh;
+      margin-left: -25vh;
+      margin-top: -25vh;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const banner = document.getElementById("banner-parallax");
+    const circle = document.getElementById("banner-circle");
+    const items = document.querySelectorAll(".banner-item");
+    const textSlider = document.getElementById("text-slider");
+    const scrollArea = document.getElementById("scroll-area");
+
+    if (!circle || !items.length || !scrollArea || !textSlider) return;
+
+    // ============ PARALLAX INTRO ============
+    function disableScroll() {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    }
+
+    function enableScroll() {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+
+    window.addEventListener("load", () => {
+      window.scrollTo(0, 0);
+      disableScroll();
+
+      const img1 = document.getElementById("banner-parallax-img1");
+      const img2 = document.getElementById("banner-parallax-img2");
+      const img3 = document.getElementById("banner-parallax-img3");
+
+      setTimeout(() => {
+        if (img1) img1.style.transform = "translateX(-100%)";
+        if (img2) img2.style.transform = "translateX(100%)";
+        if (img3) img3.style.transform = "translate(-50%, 50%) scale(1.2)";
+      }, 200);
+
+      setTimeout(() => {
+        if (!banner) {
+          enableScroll();
+          return;
+        }
+
+        const bannerHeight = banner.getBoundingClientRect().height;
+        banner.style.height = bannerHeight + "px";
+        banner.style.minHeight = "0";
+        banner.getBoundingClientRect();
+
+        requestAnimationFrame(() => {
+          banner.style.height = "0px";
+          if (img3) img3.style.transform = "translate(-50%, 0) scale(0.5)";
+        });
+
+        setTimeout(() => {
+          enableScroll();
+        }, 1800);
+      }, 2600);
+    });
+
+    // ============ WHEEL ROTATION ============
+    let current = 0;
+    let scrolling = false;
+
+    const total = items.length;
+    const angleGap = 360 / total;
+    const radius = "-32vh";
+    const contentHeight = 160;
+    const lockTime = 650;
+
+    items.forEach((item, i) => {
+      item.style.transform = `rotate(${i * angleGap}deg) translateY(${radius})`;
+      item.style.transition = "transform 1s cubic-bezier(0.4, 0, 0.2, 1)";
+    });
+
+    circle.style.transition = "transform 1s cubic-bezier(0.4, 0, 0.2, 1)";
+    textSlider.style.transition = "transform 1s cubic-bezier(0.4, 0, 0.2, 1)";
+
+    function applyRotation() {
+      circle.style.transform = `rotate(${-current * angleGap}deg)`;
+      textSlider.style.transform = `translateY(-${current * contentHeight}px)`;
+
+      items.forEach((item, i) => {
+        item.style.transform = `rotate(${i * angleGap}deg) translateY(${radius}) scale(${i === current ? 1.1 : 1})`;
+        item.style.zIndex = i === current ? "10" : "1";
+      });
+    }
+
+    function handleScroll(direction) {
+      if (scrolling) return;
+      scrolling = true;
+
+      direction === "down" ? current++ : current--;
+
+      if (current < 0) current = 0;
+      if (current >= total) current = total - 1;
+
+      applyRotation();
+
+      setTimeout(() => {
+        scrolling = false;
+      }, lockTime);
+    }
+
+    // Wheel scroll hijacking
+    let wheelAccumulated = 0;
+    const WHEEL_THRESHOLD = 160;
+    let wheelLocked = false;
+
+    window.addEventListener("wheel", (e) => {
+      const rect = scrollArea.getBoundingClientRect();
+      if (rect.top > 1 || rect.bottom < window.innerHeight - 1) return;
+
+      e.preventDefault();
+      if (scrolling || wheelLocked) return;
+
+      wheelAccumulated += e.deltaY;
+
+      if (Math.abs(wheelAccumulated) >= WHEEL_THRESHOLD) {
+        handleScroll(wheelAccumulated > 0 ? "down" : "up");
+        wheelAccumulated = 0;
+        wheelLocked = true;
+
+        setTimeout(() => {
+          wheelLocked = false;
+        }, lockTime);
+      }
+    }, { passive: false });
+
+    // Keyboard navigation
+    window.addEventListener("keydown", (e) => {
+      const rect = scrollArea.getBoundingClientRect();
+      if (rect.top > 1 || rect.bottom < window.innerHeight - 1) return;
+      if (scrolling) return;
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        handleScroll("down");
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        handleScroll("up");
+      }
+    }, { passive: false });
+
+    // Touch gestures
+    let touchStartY = 0;
+    const swipeThreshold = 100;
+
+    scrollArea.addEventListener("touchstart", (e) => {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    scrollArea.addEventListener("touchend", (e) => {
+      const diff = touchStartY - e.changedTouches[0].clientY;
+      if (Math.abs(diff) < swipeThreshold) return;
+      handleScroll(diff > 0 ? "down" : "up");
+    }, { passive: true });
+
+    applyRotation();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Yakchoo Hero Wheel",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "KNOW MORE"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "parallax_left_desktop",
+      "label": "Parallax Left Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "parallax_right_desktop",
+      "label": "Parallax Right Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "parallax_center_desktop",
+      "label": "Parallax Center Image (Desktop)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Headline",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Headline Text",
+          "default": "Your Headline Here"
+        }
+      ]
+    },
+    {
+      "type": "product",
+      "name": "Product",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Yakchoo Hero Wheel",
+      "blocks": [
+        { "type": "text", "settings": { "text": "Manifesting Health & Happiness for our Furry Friends" } },
+        { "type": "text", "settings": { "text": "Born in the Himalayas, Loved Everywhere" } },
+        { "type": "text", "settings": { "text": "Yak Cheese Chews, Made in the Himalayas with Real Yak Milk" } },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" }
+      ]
+    }
+  ]
+}
+{% endschema %}
