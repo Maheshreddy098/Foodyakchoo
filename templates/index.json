@@ -12,59 +12,9 @@
     "slideshow_yhq8kb": {
       "type": "slideshow",
       "blocks": {
-        "video_C6XaDk": {
-          "type": "video",
-          "settings": {
-            "overlay_opacity": 0,
-            "highlight_text": "Sensitive Skin",
-            "highlight_text_icon": "star",
-            "background_color": "#ffffff3b",
-            "text_color": "#ffffff",
-            "subheading": "",
-            "heading": "<p>Calm Skin<br/>All Day <em>Hydration</em></p>",
-            "heading_size": "h0",
-            "drawn_underline": true,
-            "drawn_underline_type": "squiggle_underline",
-            "drawn_underline_color": "#ffb005",
-            "description": "<p>Hyaluronic + Ceramides. Barrier-safe hydration.</p>",
-            "first_button_label": "Shop Hydration",
-            "first_button_link": "",
-            "first_button_type": "primary",
-            "desktop_content_position": "middle-left",
-            "text_alignment": "left",
-            "content_position_mobile": "end",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "image_3H8VXn": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "overlay_opacity": 0,
-            "highlight_text": "Oil Control",
-            "highlight_text_icon": "star",
-            "background_color": "#ffffff3b",
-            "text_color": "#ffffff",
-            "subheading": "",
-            "heading": "<p>Even Tone<br/>Botanic<em>al Blend</em></p>",
-            "heading_size": "h0",
-            "drawn_underline": true,
-            "drawn_underline_type": "squiggle_underline",
-            "drawn_underline_color": "#ffb005",
-            "description": "<p>Squalane + Black Tea. Oil-control even tone.</p>",
-            "first_button_label": "Shop Oil Blend",
-            "first_button_link": "",
-            "first_button_type": "primary",
-            "desktop_content_position": "middle-left",
-            "text_alignment": "left",
-            "content_position_mobile": "end",
-            "text_alignment_mobile": "center"
-          }
-        },
         "image_rw94FY": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/benifit-sec-bg.webp",
             "overlay_opacity": 0,
             "highlight_text": "Pore Care",
             "highlight_text_icon": "star",
@@ -88,8 +38,6 @@
         }
       },
       "block_order": [
-        "video_C6XaDk",
-        "image_3H8VXn",
         "image_rw94FY"
       ],
       "settings": {
@@ -103,35 +51,6 @@
         "change_slide_every": 9,
         "padding_top": 0,
         "padding_bottom": 0
-      }
-    },
-    "wheel-car": {
-      "type": "wheel-car",
-      "blocks": {
-        "product_1": {
-          "type": "product",
-          "settings": {}
-        },
-        "product_2": {
-          "type": "product",
-          "settings": {}
-        },
-        "product_3": {
-          "type": "product",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "product_1",
-        "product_2",
-        "product_3"
-      ],
-      "settings": {
-        "title": "<p>Discover Our Best <em>Products</em></p>",
-        "description": "<p>Explore our most popular items crafted with care and quality.</p>",
-        "button_label": "SHOP NOW",
-        "button_link": "/collections/all",
-        "animation_speed": 5
       }
     },
     "flexible_section_qLGCpK": {
@@ -2146,7 +2065,7 @@
     }
   },
   "order": [
-    "wheel-car",
+    "slideshow_yhq8kb",
     "flexible_section_qLGCpK",
     "product_tabs_AX9mcp",
     "collection_highlights_zUbL8r",
