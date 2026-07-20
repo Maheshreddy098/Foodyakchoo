@@ -1,36 +1,68 @@
-
 {%- assign section_st = section.settings -%}
 
 <section class="yakchoo-hero" id="scroll-area">
   <section class="banner-parallax-section" id="banner-parallax">
     {% if section_st.parallax_left_desktop != blank %}
-      <img src="{{ section_st.parallax_left_desktop | image_url: width: 600 }}" id="banner-parallax-img1" class="banner-parallax-img" style="transform: translateX(0%);">
+      <img
+        src="{{ section_st.parallax_left_desktop | image_url: width: 600 }}"
+        width="600"
+        height="580"
+        id="banner-parallax-img1"
+        class="banner-parallax-img"
+        style="transform: translateX(0%);"
+        alt="Left parallax image"
+      />
     {% endif %}
     {% if section_st.parallax_right_desktop != blank %}
-      <img src="{{ section_st.parallax_right_desktop | image_url: width: 600 }}" id="banner-parallax-img2" class="banner-parallax-img" style="transform: translateX(0%);">
+      <img
+        src="{{ section_st.parallax_right_desktop | image_url: width: 600 }}"
+        width="600"
+        height="540"
+        id="banner-parallax-img2"
+        class="banner-parallax-img"
+        style="transform: translateX(0%);"
+        alt="Right parallax image"
+      />
     {% endif %}
     {% if section_st.parallax_center_desktop != blank %}
-      <img src="{{ section_st.parallax_center_desktop | image_url: width: 400 }}" id="banner-parallax-img3" class="banner-parallax-img" style="transform: translate(-50%, 40px) scale(0.9);">
+      <img
+        src="{{ section_st.parallax_center_desktop | image_url: width: 400 }}"
+        width="400"
+        height="300"
+        id="banner-parallax-img3"
+        class="banner-parallax-img"
+        style="transform: translate(-50%, 40px) scale(0.9);"
+        alt="Center parallax image"
+      />
     {% endif %}
   </section>
 
-  <section class="scroll-rotate-section">
+  <section
+    class="scroll-rotate-section"
+    {% if section_st.fixed_background != blank %}
+      style="background-image: url('{{ section_st.fixed_background | image_url: width: 1920 }}'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;"
+    {% endif %}
+    data-wheel-loop="{{ section_st.wheel_loop }}"
+    data-wheel-threshold="{{ section_st.wheel_threshold }}"
+    data-wheel-lock-time="{{ section_st.wheel_lock_time }}"
+  >
     <section class="banner-section">
       <!-- TEXT SLIDER -->
       <div class="banner-content-div">
-        <div class="banner-content-wrapper" id="text-slider" style="transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1); transform: translateY(-160px);">
-          <div class="banner-content">
-            <h3>Manifesting Health &amp; Happiness for our Furry Friends</h3>
-          </div>
-          <div class="banner-content">
-            <h3>Born in the Himalayas, Loved Everywhere</h3>
-          </div>
-          <div class="banner-content">
-            <h3>Yak Cheese Chews, Made in the Himalayas with Real Yak Milk</h3>
-          </div>
+        <div class="banner-content-wrapper" id="text-slider">
+          {% for block in section.blocks %}
+            {% if block.type == 'text' %}
+              <div class="banner-content">
+                <h2>{{ block.settings.text }}</h2>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
-      <a class="know-btn" id="knowMoreBtn" href="{{ section_st.button_link | default: '#' }}">{{ section_st.button_label }}</a>
+
+      <a class="know-btn" id="knowMoreBtn" href="{{ section_st.button_link | default: '#' }}">
+        {{ section_st.button_label }}
+      </a>
 
       <!-- PRODUCT WHEEL -->
       <div class="banner-circle-box">
@@ -38,14 +70,15 @@
           {% for block in section.blocks %}
             {% if block.type == 'product' %}
               <div class="banner-item">
-                {% if block.settings.product_image %}
-                  <img src="{{ block.settings.product_image | image_url: width: 500 }}" alt="Product">
-                {% elsif forloop.index == 1 %}
-                  <img src="https://yakchoo.com/wp-content/themes/yakchu/img/banner-scroll-img1.webp" alt="Product">
-                  {% elsif forloop.index == 2 %}
-                  <img src="https://yakchoo.com/wp-content/themes/yakchu/img/banner-scroll-img2.webp" alt="Product">
-                  {%else %}
-                  <img src="https://yakchoo.com/wp-content/themes/yakchu/img/banner-scroll-img3.webp" alt="Product">
+                {% if block.settings.product_image != blank %}
+                  <img
+                    src="{{ block.settings.product_image | image_url: width: 500 }}"
+                    width="500"
+                    height="500"
+                    alt="Product image"
+                  />
+                {% else %}
+                  <div class="banner-item-placeholder">Upload product image</div>
                 {% endif %}
               </div>
             {% endif %}
@@ -75,19 +108,14 @@
   }
 
   body {
-    background: repeating-linear-gradient(90deg, #e2f4fc 0px, #e2f4fc 110px, #d2eef9 110px, #d2eef9 220px);
+    background: repeating-linear-gradient(90deg, #e2f4fc 0, #e2f4fc 110px, #d2eef9 110px, #d2eef9 220px);
     font-family: var(--font-body);
     overscroll-behavior: none;
   }
 
-  /* ============ PARALLAX BANNER ============ */
   .banner-parallax-section {
     height: 100vh;
     min-height: 100vh;
-    background-attachment: fixed;
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: cover;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -123,7 +151,6 @@
     top: 10px;
   }
 
-  /* ============ SCROLL ROTATE SECTION ============ */
   .yakchoo-hero {
     position: relative;
     width: 100%;
@@ -154,19 +181,7 @@
     flex-direction: column;
     padding: 160px 0 0 0;
   }
-  .scroll-rotate-section {
-  position: relative;
-  height: 100%;
-  overflow-x: hidden;
-  background-image: url('https://yakchoo.com/wp-content/themes/yakchu/img/banner-bg.webp');
-  background-attachment: fixed;  /* Keeps it fixed during scroll */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
-
-  /* TEXT CONTENT */
   .banner-content-div {
     width: 420px;
     height: 160px;
@@ -198,7 +213,6 @@
     text-transform: uppercase;
   }
 
-  /* BUTTON */
   .know-btn {
     padding: 15px 28px;
     border-radius: 42px;
@@ -209,13 +223,11 @@
     font-size: 18px;
     line-height: 1;
     font-weight: 600;
-    width: auto;
     margin-top: 20px;
     cursor: pointer;
     position: relative;
     z-index: 30;
     transition: all 0.3s ease;
-    border: none;
     display: inline-block;
   }
 
@@ -224,7 +236,6 @@
     box-shadow: 0 10px 25px rgba(25, 61, 113, 0.2);
   }
 
-  /* PRODUCT WHEEL */
   .banner-circle-box {
     width: 80vh;
     height: 80vh;
@@ -261,7 +272,19 @@
     object-fit: contain;
   }
 
-  /* ============ RESPONSIVE ============ */
+  .banner-item-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: rgba(0,0,0,0.18);
+    font-size: 14px;
+    text-align: center;
+    padding: 20px;
+  }
+
   @media (max-width: 1024px) {
     .banner-circle-box {
       width: 60vh;
@@ -332,10 +355,14 @@
     const items = document.querySelectorAll(".banner-item");
     const textSlider = document.getElementById("text-slider");
     const scrollArea = document.getElementById("scroll-area");
+    const sectionEl = document.querySelector('.scroll-rotate-section');
 
-    if (!circle || !items.length || !scrollArea || !textSlider) return;
+    if (!circle || !items.length || !scrollArea || !textSlider || !sectionEl) return;
 
-    // ============ PARALLAX INTRO ============
+    const loopWheel = sectionEl.dataset.wheelLoop === 'true';
+    const WHEEL_THRESHOLD = parseInt(sectionEl.dataset.wheelThreshold) || 160;
+    const lockTime = parseInt(sectionEl.dataset.wheelLockTime) || 650;
+
     function disableScroll() {
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
@@ -382,7 +409,6 @@
       }, 2600);
     });
 
-    // ============ WHEEL ROTATION ============
     let current = 0;
     let scrolling = false;
 
@@ -390,7 +416,6 @@
     const angleGap = 360 / total;
     const radius = "-32vh";
     const contentHeight = 160;
-    const lockTime = 650;
 
     items.forEach((item, i) => {
       item.style.transform = `rotate(${i * angleGap}deg) translateY(${radius})`;
@@ -416,8 +441,8 @@
 
       direction === "down" ? current++ : current--;
 
-      if (current < 0) current = 0;
-      if (current >= total) current = total - 1;
+      if (current < 0) current = loopWheel ? total - 1 : 0;
+      if (current >= total) current = loopWheel ? 0 : total - 1;
 
       applyRotation();
 
@@ -426,9 +451,7 @@
       }, lockTime);
     }
 
-    // Wheel scroll hijacking
     let wheelAccumulated = 0;
-    const WHEEL_THRESHOLD = 160;
     let wheelLocked = false;
 
     window.addEventListener("wheel", (e) => {
@@ -451,7 +474,6 @@
       }
     }, { passive: false });
 
-    // Keyboard navigation
     window.addEventListener("keydown", (e) => {
       const rect = scrollArea.getBoundingClientRect();
       if (rect.top > 1 || rect.bottom < window.innerHeight - 1) return;
@@ -466,7 +488,6 @@
       }
     }, { passive: false });
 
-    // Touch gestures
     let touchStartY = 0;
     const swipeThreshold = 100;
 
@@ -515,6 +536,29 @@
       "type": "image_picker",
       "id": "parallax_center_desktop",
       "label": "Parallax Center Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "fixed_background",
+      "label": "Fixed Background Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "wheel_loop",
+      "label": "Loop wheel when reaching ends",
+      "default": true
+    },
+    {
+      "type": "number",
+      "id": "wheel_threshold",
+      "label": "Wheel scroll threshold (px)",
+      "default": 160
+    },
+    {
+      "type": "number",
+      "id": "wheel_lock_time",
+      "label": "Wheel lock time (ms)",
+      "default": 650
     }
   ],
   "blocks": [
