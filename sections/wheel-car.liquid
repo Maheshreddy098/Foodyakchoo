@@ -1,12 +1,12 @@
 {%- assign section_st = section.settings -%}
 
-<section class="yakchoo-hero" id="scroll-area">
+<section class="yakchoo-hero scroll-area" data-section-id="{{ section.id }}">
   <section
     class="scroll-rotate-section"
-    style="{% if section_st.background_image != blank %}background-image: url('{{ section_st.background_image | image_url: width: 2048 }}'); background-size: cover; background-position: center; background-repeat: no-repeat;{% elsif section_st.background_color != blank %}background-color: {{ section_st.background_color }};{% endif %}"
     data-wheel-loop="{{ section_st.wheel_loop }}"
     data-wheel-threshold="{{ section_st.wheel_threshold }}"
     data-wheel-lock-time="{{ section_st.wheel_lock_time }}"
+    style="{% if section_st.background_image != blank %}background-image: url('{{ section_st.background_image | image_url: width: 2048 }}'); background-size: cover; background-position: center; background-repeat: no-repeat;{% elsif section_st.background_color != blank %}background-color: {{ section_st.background_color }};{% endif %}"
   >
     <section class="banner-section">
       <!-- TEXT SLIDER -->
@@ -22,25 +22,22 @@
         </div>
       </div>
 
-      <a class="know-btn" id="knowMoreBtn" href="{{ section_st.button_link | default: '#' }}" style="background-color: {{ section_st.button_bg_color }}; color: {{ section_st.button_text_color }};">
+      <a class="know-btn" href="{{ section_st.button_link | default: '#' }}" style="background-color: {{ section_st.button_bg_color }}; color: {{ section_st.button_text_color }};">
         {{ section_st.button_label }}
       </a>
 
       <!-- PRODUCT WHEEL -->
       <div class="banner-circle-box" style="width: calc(70vh * {{ section_st.product_scale | default: 100 }} / 100); height: calc(70vh * {{ section_st.product_scale | default: 100 }} / 100); top: 100%; transform: translate(-50%, -15%) scale(1.3);">
-        <div class="banner-circle" id="banner-circle">
+        <div class="banner-circle" data-behavior="banner-circle">
+          {% assign default_images = 'https://yakchoo.com/wp-content/themes/yakchu/img/banner-scroll-img1.webp,https://yakchoo.com/wp-content/themes/yakchu/img/banner-scroll-img2.webp,https://yakchoo.com/wp-content/themes/yakchu/img/banner-scroll-img3.webp' | split: ',' %}
           {% for block in section.blocks %}
             {% if block.type == 'product' %}
+              {% assign fallback_image = default_images[forloop.index0] %}
               <div class="banner-item">
                 {% if block.settings.product_image != blank %}
-                  <img
-                    src="{{ block.settings.product_image | image_url: width: 500 }}"
-                    width="500"
-                    height="500"
-                    alt="Product image"
-                  />
+                  <img src="{{ block.settings.product_image | image_url: width: 900 }}" width="900" height="900" alt="Product image" />
                 {% else %}
-                  <div class="banner-item-placeholder">Upload product image</div>
+                  <img src="{{ fallback_image }}" width="900" height="900" alt="Product image" />
                 {% endif %}
               </div>
             {% endif %}
@@ -52,35 +49,16 @@
 </section>
 
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  :root {
-    --font-heading: "Bebas Neue", sans-serif;
-    --font-body: "Montserrat", sans-serif;
-    --color-primary: #193d71;
-    --color-accent: #fee000;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    background: repeating-linear-gradient(90deg, #e2f4fc 0, #e2f4fc 110px, #d2eef9 110px, #d2eef9 220px);
-    font-family: var(--font-body);
-  }
 
   .yakchoo-hero {
+    --color-primary: #193d71;
+    --color-accent: #fee000;
     position: relative;
     width: 100%;
     overflow-x: hidden;
   }
 
-  #scroll-area {
+  .scroll-area {
     height: 100vh;
     overflow: hidden;
   }
@@ -174,22 +152,21 @@
   }
 
   .banner-item {
-    width: 80vh;
-    height: 80vh;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-left: -40vh;
-    margin-top: -40vh;
+    transform: translate(-50%, -50%);
     overflow: hidden;
-    transition: transform 1s ease-out;
+    transition: transform 1s ease-out, opacity 0.3s ease;
   }
 
   .banner-item img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   .banner-item-placeholder {
@@ -209,13 +186,6 @@
     .banner-circle-box {
       width: 60vh;
       height: 60vh;
-    }
-
-    .banner-item {
-      width: 60vh;
-      height: 60vh;
-      margin-left: -30vh;
-      margin-top: -30vh;
     }
 
     .banner-content h2 {
@@ -258,169 +228,146 @@
       top: 80%;
       transform: translate(-50%, -50%) scale(1.2);
     }
-
-    .banner-item {
-      width: 50vh;
-      height: 50vh;
-      margin-left: -25vh;
-      margin-top: -25vh;
-    }
   }
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const circle = document.getElementById("banner-circle");
-    const items = document.querySelectorAll(".banner-item");
-    const textSlider = document.getElementById("text-slider");
-    const scrollArea = document.getElementById("scroll-area");
-    const sectionEl = document.querySelector('.scroll-rotate-section');
+  (function() {
+    function initWheelCar(sectionRoot) {
+      if (!sectionRoot || sectionRoot.dataset.wheelCarInit === 'true') return;
+      sectionRoot.dataset.wheelCarInit = 'true';
 
-    if (!circle || !items.length || !scrollArea || !textSlider || !sectionEl) return;
+      const circle = sectionRoot.querySelector('[data-behavior="banner-circle"]');
+      const items = sectionRoot.querySelectorAll('.banner-item');
+      const textSlides = sectionRoot.querySelectorAll('.banner-content');
+      const scrollArea = sectionRoot.classList.contains('scroll-area') ? sectionRoot : sectionRoot.querySelector('.scroll-area');
+      const sectionEl = sectionRoot.querySelector('.scroll-rotate-section');
 
-    const loopWheel = sectionEl.dataset.wheelLoop === 'true';
-    const WHEEL_THRESHOLD = parseInt(sectionEl.dataset.wheelThreshold) || 160;
-    const lockTime = parseInt(sectionEl.dataset.wheelLockTime) || 650;
-
-
-    let current = 0;
-    let scrolling = false;
-
-    const total = items.length;
-    const angleGap = 360 / total;
-    const radius = "-32vh";
-    // Keep text static: only show the first heading (no sliding)
-    const textSlides = textSlider.querySelectorAll('.banner-content');
-    textSlides.forEach((el, i) => {
-      el.style.display = i === 0 ? 'flex' : 'none';
-    });
-
-    items.forEach((item, i) => {
-      item.style.transform = `rotate(${i * angleGap}deg) translateY(${radius})`;
-      item.style.transition = "transform 1s cubic-bezier(0.4, 0, 0.2, 1)";
-    });
-
-    circle.style.transition = "transform 1s cubic-bezier(0.4, 0, 0.2, 1)";
-    textSlider.style.transition = "transform 1s cubic-bezier(0.4, 0, 0.2, 1)";
-
-    function applyRotation() {
-      circle.style.transform = `rotate(${-current * angleGap}deg)`;
-
-      items.forEach((item, i) => {
-        item.style.opacity = i === current ? "1" : "0";
-        item.style.transform = `rotate(${i * angleGap}deg) translateY(${radius}) scale(${i === current ? 1.1 : 0.95})`;
-        item.style.zIndex = i === current ? "10" : "1";
-      });
-    }
-
-    function handleScroll(direction) {
-      if (scrolling) return;
-      if (!loopWheel && ((current === total - 1 && direction === "down") || (current === 0 && direction === "up"))) {
-        return;
+      if (!circle || !items.length || !textSlides.length || !sectionEl) return;
+      if (!scrollArea) {
+        return; // section not ready, abort safely
       }
 
-      scrolling = true;
-      direction === "down" ? current++ : current--;
+      const loopWheel = sectionEl.dataset.wheelLoop === 'true';
+      const WHEEL_THRESHOLD = parseInt(sectionEl.dataset.wheelThreshold, 10) || 160;
+      const lockTime = parseInt(sectionEl.dataset.wheelLockTime, 10) || 650;
 
-      if (current < 0) current = loopWheel ? total - 1 : 0;
-      if (current >= total) current = loopWheel ? 0 : total - 1;
+      let current = 0;
+      let scrolling = false;
+      const total = items.length;
+      const angleGap = 360 / total;
+      const radius = '-32vh';
 
-      applyRotation();
+      function updateTextSlides() {
+        const activeTextIndex = textSlides.length ? current % textSlides.length : 0;
+        textSlides.forEach((slide, index) => {
+          slide.style.display = index === activeTextIndex ? 'flex' : 'none';
+        });
+      }
 
-      setTimeout(() => {
-        scrolling = false;
-      }, lockTime);
-    }
+      function applyRotation() {
+        circle.style.transform = `rotate(${-current * angleGap}deg)`;
+        updateTextSlides();
 
-    let wheelAccumulated = 0;
-    let wheelLocked = false;
+        items.forEach((item, i) => {
+          item.style.opacity = i === current ? '1' : '0';
+          item.style.transform = `translate(-50%, -50%) rotate(${i * angleGap}deg) translateY(${radius}) scale(${i === current ? 1.05 : 0.96})`;
+          item.style.zIndex = i === current ? '10' : '1';
+        });
+      }
 
-    window.addEventListener("wheel", (e) => {
-      const rect = scrollArea.getBoundingClientRect();
-      // allow handling when section is at least partially in viewport
-      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+      function handleScroll(direction) {
+        if (scrolling) return;
+        if (!loopWheel && ((current === total - 1 && direction === 'down') || (current === 0 && direction === 'up'))) {
+          return;
+        }
 
-      if (scrolling || wheelLocked) return;
+        scrolling = true;
+        current += direction === 'down' ? 1 : -1;
 
-      const direction = e.deltaY > 0 ? "down" : "up";
-      const atEnd = !loopWheel && current === total - 1 && direction === "down";
-      const atStart = !loopWheel && current === 0 && direction === "up";
+        if (current < 0) current = loopWheel ? total - 1 : 0;
+        if (current >= total) current = loopWheel ? 0 : total - 1;
 
-      // If user is trying to scroll past the last/first slide, allow the
-      // page to continue to the next section by programmatically scrolling
-      // to the next element. This avoids the sticky/overflow preventing
-      // native scrolling on some themes.
-      if (atStart || atEnd) {
-        const scrollToNext = () => {
-          try {
-            // Scroll the window by one viewport height to reach next section
-            window.scrollBy({ top: direction === 'down' ? window.innerHeight : -window.innerHeight, behavior: 'smooth' });
-            wheelLocked = true;
-            setTimeout(() => { wheelLocked = false; }, lockTime);
-          } catch (err) {
-            // fallback: let default behavior happen
+        applyRotation();
+        setTimeout(() => { scrolling = false; }, lockTime);
+      }
+
+      let wheelAccumulated = 0;
+      let wheelLocked = false;
+
+      function isSectionVisible() {
+        const rect = scrollArea.getBoundingClientRect();
+        return rect.bottom >= 0 && rect.top <= window.innerHeight;
+      }
+
+      window.addEventListener('wheel', function(e) {
+        if (!isSectionVisible() || scrolling || wheelLocked) return;
+
+        wheelAccumulated += e.deltaY;
+        const direction = wheelAccumulated > 0 ? 'down' : 'up';
+
+        if (Math.abs(wheelAccumulated) >= WHEEL_THRESHOLD) {
+          e.preventDefault();
+          if (!loopWheel && ((current === total - 1 && direction === 'down') || (current === 0 && direction === 'up'))) {
+            wheelAccumulated = 0;
             return;
           }
-        };
 
-        // Let a small delta pass-through trigger the programmatic scroll
-        // and do not accumulate wheel deltas here.
-        scrollToNext();
-        return;
-      }
+          handleScroll(direction);
+          wheelAccumulated = 0;
+          wheelLocked = true;
+          setTimeout(() => { wheelLocked = false; }, lockTime);
+        }
+      }, { passive: false });
 
-      e.preventDefault();
-      wheelAccumulated += e.deltaY;
+      window.addEventListener('keydown', function(e) {
+        if (!isSectionVisible() || scrolling) return;
 
-      if (Math.abs(wheelAccumulated) >= WHEEL_THRESHOLD) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          handleScroll('down');
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          handleScroll('up');
+        }
+      }, { passive: false });
+
+      let touchStartY = 0;
+      const swipeThreshold = 80;
+
+      scrollArea.addEventListener('touchstart', function(e) {
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+
+      scrollArea.addEventListener('touchend', function(e) {
+        const diff = touchStartY - e.changedTouches[0].clientY;
+        if (Math.abs(diff) < swipeThreshold) return;
+        const direction = diff > 0 ? 'down' : 'up';
+        if (!loopWheel && ((current === total - 1 && direction === 'down') || (current === 0 && direction === 'up'))) {
+          return;
+        }
         handleScroll(direction);
-        wheelAccumulated = 0;
-        wheelLocked = true;
+      }, { passive: true });
 
-        setTimeout(() => {
-          wheelLocked = false;
-        }, lockTime);
-      }
-    }, { passive: false });
+      updateTextSlides();
+      applyRotation();
+    }
 
-    window.addEventListener("keydown", (e) => {
-      const rect = scrollArea.getBoundingClientRect();
-      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-      if (scrolling) return;
+    function initSection(event) {
+      const sectionRoot = event && event.target && event.target.dataset && event.target.dataset.sectionId
+        ? event.target
+        : document.querySelector('[data-section-id="{{ section.id }}"]');
+      initWheelCar(sectionRoot);
+    }
 
-      if (e.key === "ArrowDown") {
-        e.preventDefault();
-        handleScroll("down");
-      } else if (e.key === "ArrowUp") {
-        e.preventDefault();
-        handleScroll("up");
-      }
-    }, { passive: false });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSection);
+    } else {
+      initSection();
+    }
 
-    let touchStartY = 0;
-    const swipeThreshold = 100;
-
-    scrollArea.addEventListener("touchstart", (e) => {
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-
-    scrollArea.addEventListener("touchend", (e) => {
-      const diff = touchStartY - e.changedTouches[0].clientY;
-      if (Math.abs(diff) < swipeThreshold) return;
-      const direction = diff > 0 ? "down" : "up";
-      if (!loopWheel && ((current === total - 1 && direction === "down") || (current === 0 && direction === "up"))) {
-        // When swiping beyond the last/first slide, programmatically
-        // scroll to the next/previous section so the page continues.
-        const scrollTop = direction === 'down' ? window.innerHeight : -window.innerHeight;
-        window.scrollBy({ top: scrollTop, behavior: 'smooth' });
-        return;
-      }
-
-      handleScroll(direction);
-    }, { passive: true });
-
-    applyRotation();
-  });
+    document.addEventListener('shopify:section:load', initSection);
+  })();
 </script>
 
 {% schema %}
