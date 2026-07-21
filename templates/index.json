@@ -9,50 +9,6 @@
  */
 {
   "sections": {
-    "slideshow_yhq8kb": {
-      "type": "slideshow",
-      "blocks": {
-        "image_rw94FY": {
-          "type": "image",
-          "settings": {
-            "overlay_opacity": 0,
-            "highlight_text": "Pore Care",
-            "highlight_text_icon": "star",
-            "background_color": "#ffffff3b",
-            "text_color": "#ffffff",
-            "subheading": "",
-            "heading": "<p>Clear Skin<br/>Pore Blu<em>r Look</em></p>",
-            "heading_size": "h0",
-            "drawn_underline": true,
-            "drawn_underline_type": "squiggle_underline",
-            "drawn_underline_color": "#ffb005",
-            "description": "<p>Niacinamide + Zinc. Oil control smooth look.</p>",
-            "first_button_label": "Shop Pore Care",
-            "first_button_link": "",
-            "first_button_type": "primary",
-            "desktop_content_position": "middle-left",
-            "text_alignment": "left",
-            "content_position_mobile": "end",
-            "text_alignment_mobile": "center"
-          }
-        }
-      },
-      "block_order": [
-        "image_rw94FY"
-      ],
-      "settings": {
-        "section_width": "full_width",
-        "slide_height": "full_screen",
-        "color_scheme": "scheme-b057792d-f0df-4ed0-973f-3dd88bca67d5",
-        "background_color_loading": "#6c5a47",
-        "show_navigation": true,
-        "show_pagination": true,
-        "slide_auto_change": true,
-        "change_slide_every": 9,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "flexible_section_qLGCpK": {
       "type": "flexible-section",
       "blocks": {
@@ -546,6 +502,38 @@
         "padding_top": 0,
         "padding_bottom": 0,
         "show_divider": false
+      }
+    },
+    "wheel-car": {
+      "type": "wheel-car",
+      "blocks": {
+        "text_1": {
+          "type": "text",
+          "settings": {
+            "text": "Your Headline Here"
+          }
+        },
+        "product_1": {
+          "type": "product",
+          "settings": {
+            "product_image": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_1",
+        "product_1"
+      ],
+      "settings": {
+        "button_label": "KNOW MORE",
+        "button_link": "#",
+        "parallax_left_desktop": "",
+        "parallax_right_desktop": "",
+        "parallax_center_desktop": "",
+        "fixed_background": "",
+        "wheel_loop": true,
+        "wheel_threshold": 160,
+        "wheel_lock_time": 650
       }
     },
     "product_tabs_AX9mcp": {
@@ -2066,7 +2054,6 @@
   },
   "order": [
     "wheel-car",
-    "slideshow_yhq8kb",
     "flexible_section_qLGCpK",
     "product_tabs_AX9mcp",
     "collection_highlights_zUbL8r",
