@@ -510,10 +510,34 @@
         "text_1": {
           "type": "text",
           "settings": {
-            "text": "Your Headline Here"
+            "text": "Manifesting Health & Happiness for our Furry Friends"
+          }
+        },
+        "text_2": {
+          "type": "text",
+          "settings": {
+            "text": "Born in the Himalayas, Loved Everywhere"
+          }
+        },
+        "text_3": {
+          "type": "text",
+          "settings": {
+            "text": "Yak Cheese Chews, Made in the Himalayas with Real Yak Milk"
           }
         },
         "product_1": {
+          "type": "product",
+          "settings": {
+            "product_image": ""
+          }
+        },
+        "product_2": {
+          "type": "product",
+          "settings": {
+            "product_image": ""
+          }
+        },
+        "product_3": {
           "type": "product",
           "settings": {
             "product_image": ""
@@ -522,16 +546,24 @@
       },
       "block_order": [
         "text_1",
-        "product_1"
+        "text_2",
+        "text_3",
+        "product_1",
+        "product_2",
+        "product_3"
       ],
       "settings": {
         "button_label": "KNOW MORE",
         "button_link": "#",
-        "parallax_left_desktop": "",
-        "parallax_right_desktop": "",
-        "parallax_center_desktop": "",
-        "fixed_background": "",
-        "wheel_loop": true,
+        "background_image": "",
+        "background_color": "#e2f4fc",
+        "content_alignment": "left",
+        "heading_color": "#193d71",
+        "heading_size": 48,
+        "button_bg_color": "#193d71",
+        "button_text_color": "#fee000",
+        "product_scale": 100,
+        "wheel_loop": false,
         "wheel_threshold": 160,
         "wheel_lock_time": 650
       }

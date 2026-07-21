@@ -1,71 +1,33 @@
 {%- assign section_st = section.settings -%}
 
 <section class="yakchoo-hero" id="scroll-area">
-  <section class="banner-parallax-section" id="banner-parallax">
-    {% if section_st.parallax_left_desktop != blank %}
-      <img
-        src="{{ section_st.parallax_left_desktop | image_url: width: 600 }}"
-        width="600"
-        height="580"
-        id="banner-parallax-img1"
-        class="banner-parallax-img"
-        style="transform: translateX(0%);"
-        alt="Left parallax image"
-      />
-    {% endif %}
-    {% if section_st.parallax_right_desktop != blank %}
-      <img
-        src="{{ section_st.parallax_right_desktop | image_url: width: 600 }}"
-        width="600"
-        height="540"
-        id="banner-parallax-img2"
-        class="banner-parallax-img"
-        style="transform: translateX(0%);"
-        alt="Right parallax image"
-      />
-    {% endif %}
-    {% if section_st.parallax_center_desktop != blank %}
-      <img
-        src="{{ section_st.parallax_center_desktop | image_url: width: 400 }}"
-        width="400"
-        height="300"
-        id="banner-parallax-img3"
-        class="banner-parallax-img"
-        style="transform: translate(-50%, 40px) scale(0.9);"
-        alt="Center parallax image"
-      />
-    {% endif %}
-  </section>
-
   <section
     class="scroll-rotate-section"
-    {% if section_st.fixed_background != blank %}
-      style="background-image: url('{{ section_st.fixed_background | image_url: width: 1920 }}'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;"
-    {% endif %}
+    style="{% if section_st.background_image != blank %}background-image: url('{{ section_st.background_image | image_url: width: 2048 }}'); background-size: cover; background-position: center; background-repeat: no-repeat;{% elsif section_st.background_color != blank %}background-color: {{ section_st.background_color }};{% endif %}"
     data-wheel-loop="{{ section_st.wheel_loop }}"
     data-wheel-threshold="{{ section_st.wheel_threshold }}"
     data-wheel-lock-time="{{ section_st.wheel_lock_time }}"
   >
     <section class="banner-section">
       <!-- TEXT SLIDER -->
-      <div class="banner-content-div">
+      <div class="banner-content-div" style="text-align: {{ section_st.content_alignment }};">
         <div class="banner-content-wrapper" id="text-slider">
           {% for block in section.blocks %}
             {% if block.type == 'text' %}
               <div class="banner-content">
-                <h2>{{ block.settings.text }}</h2>
+                <h2 style="color: {{ section_st.heading_color }}; font-size: {{ section_st.heading_size }}px;">{{ block.settings.text }}</h2>
               </div>
             {% endif %}
           {% endfor %}
         </div>
       </div>
 
-      <a class="know-btn" id="knowMoreBtn" href="{{ section_st.button_link | default: '#' }}">
+      <a class="know-btn" id="knowMoreBtn" href="{{ section_st.button_link | default: '#' }}" style="background-color: {{ section_st.button_bg_color }}; color: {{ section_st.button_text_color }};">
         {{ section_st.button_label }}
       </a>
 
       <!-- PRODUCT WHEEL -->
-      <div class="banner-circle-box">
+      <div class="banner-circle-box" style="width: calc(70vh * {{ section_st.product_scale | default: 100 }} / 100); height: calc(70vh * {{ section_st.product_scale | default: 100 }} / 100); top: 100%; transform: translate(-50%, -15%) scale(1.3);">
         <div class="banner-circle" id="banner-circle">
           {% for block in section.blocks %}
             {% if block.type == 'product' %}
@@ -110,45 +72,6 @@
   body {
     background: repeating-linear-gradient(90deg, #e2f4fc 0, #e2f4fc 110px, #d2eef9 110px, #d2eef9 220px);
     font-family: var(--font-body);
-    overscroll-behavior: none;
-  }
-
-  .banner-parallax-section {
-    height: 100vh;
-    min-height: 100vh;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    transition: height 1.8s cubic-bezier(0.77, 0, 0.175, 1);
-    will-change: height;
-  }
-
-  .banner-parallax-img {
-    position: absolute;
-    width: 100%;
-    transition: all 2s ease-in-out;
-    z-index: 0;
-  }
-
-  #banner-parallax-img1 {
-    height: 58vh;
-    left: 0;
-    bottom: 0;
-  }
-
-  #banner-parallax-img2 {
-    height: 54vh;
-    right: 0;
-    bottom: 0;
-  }
-
-  #banner-parallax-img3 {
-    width: auto;
-    height: 30vh;
-    left: 50%;
-    top: 10px;
   }
 
   .yakchoo-hero {
@@ -160,7 +83,6 @@
   #scroll-area {
     height: 100vh;
     overflow: hidden;
-    touch-action: none;
   }
 
   .scroll-rotate-section {
@@ -204,13 +126,11 @@
 
   .banner-content h2 {
     font-family: var(--font-heading);
-    font-size: 48px;
     font-weight: 600;
     line-height: 1.1;
-    text-align: left;
-    color: var(--color-primary);
     max-width: 366px;
     text-transform: uppercase;
+    margin: 0;
   }
 
   .know-btn {
@@ -237,13 +157,13 @@
   }
 
   .banner-circle-box {
-    width: 80vh;
-    height: 80vh;
     position: absolute;
     left: 50%;
     top: 100%;
     transform: translate(-50%, -15%) scale(1.3);
     perspective: 2000px;
+    width: calc(70vh * var(--product-scale, 1));
+    height: calc(70vh * var(--product-scale, 1));
   }
 
   .banner-circle {
@@ -350,7 +270,6 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const banner = document.getElementById("banner-parallax");
     const circle = document.getElementById("banner-circle");
     const items = document.querySelectorAll(".banner-item");
     const textSlider = document.getElementById("text-slider");
@@ -363,51 +282,6 @@
     const WHEEL_THRESHOLD = parseInt(sectionEl.dataset.wheelThreshold) || 160;
     const lockTime = parseInt(sectionEl.dataset.wheelLockTime) || 650;
 
-    function disableScroll() {
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-    }
-
-    function enableScroll() {
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-    }
-
-    window.addEventListener("load", () => {
-      window.scrollTo(0, 0);
-      disableScroll();
-
-      const img1 = document.getElementById("banner-parallax-img1");
-      const img2 = document.getElementById("banner-parallax-img2");
-      const img3 = document.getElementById("banner-parallax-img3");
-
-      setTimeout(() => {
-        if (img1) img1.style.transform = "translateX(-100%)";
-        if (img2) img2.style.transform = "translateX(100%)";
-        if (img3) img3.style.transform = "translate(-50%, 50%) scale(1.2)";
-      }, 200);
-
-      setTimeout(() => {
-        if (!banner) {
-          enableScroll();
-          return;
-        }
-
-        const bannerHeight = banner.getBoundingClientRect().height;
-        banner.style.height = bannerHeight + "px";
-        banner.style.minHeight = "0";
-        banner.getBoundingClientRect();
-
-        requestAnimationFrame(() => {
-          banner.style.height = "0px";
-          if (img3) img3.style.transform = "translate(-50%, 0) scale(0.5)";
-        });
-
-        setTimeout(() => {
-          enableScroll();
-        }, 1800);
-      }, 2600);
-    });
 
     let current = 0;
     let scrolling = false;
@@ -415,7 +289,11 @@
     const total = items.length;
     const angleGap = 360 / total;
     const radius = "-32vh";
-    const contentHeight = 160;
+    // Keep text static: only show the first heading (no sliding)
+    const textSlides = textSlider.querySelectorAll('.banner-content');
+    textSlides.forEach((el, i) => {
+      el.style.display = i === 0 ? 'flex' : 'none';
+    });
 
     items.forEach((item, i) => {
       item.style.transform = `rotate(${i * angleGap}deg) translateY(${radius})`;
@@ -427,18 +305,21 @@
 
     function applyRotation() {
       circle.style.transform = `rotate(${-current * angleGap}deg)`;
-      textSlider.style.transform = `translateY(-${current * contentHeight}px)`;
 
       items.forEach((item, i) => {
-        item.style.transform = `rotate(${i * angleGap}deg) translateY(${radius}) scale(${i === current ? 1.1 : 1})`;
+        item.style.opacity = i === current ? "1" : "0";
+        item.style.transform = `rotate(${i * angleGap}deg) translateY(${radius}) scale(${i === current ? 1.1 : 0.95})`;
         item.style.zIndex = i === current ? "10" : "1";
       });
     }
 
     function handleScroll(direction) {
       if (scrolling) return;
-      scrolling = true;
+      if (!loopWheel && ((current === total - 1 && direction === "down") || (current === 0 && direction === "up"))) {
+        return;
+      }
 
+      scrolling = true;
       direction === "down" ? current++ : current--;
 
       if (current < 0) current = loopWheel ? total - 1 : 0;
@@ -456,15 +337,43 @@
 
     window.addEventListener("wheel", (e) => {
       const rect = scrollArea.getBoundingClientRect();
-      if (rect.top > 1 || rect.bottom < window.innerHeight - 1) return;
+      // allow handling when section is at least partially in viewport
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
 
-      e.preventDefault();
       if (scrolling || wheelLocked) return;
 
+      const direction = e.deltaY > 0 ? "down" : "up";
+      const atEnd = !loopWheel && current === total - 1 && direction === "down";
+      const atStart = !loopWheel && current === 0 && direction === "up";
+
+      // If user is trying to scroll past the last/first slide, allow the
+      // page to continue to the next section by programmatically scrolling
+      // to the next element. This avoids the sticky/overflow preventing
+      // native scrolling on some themes.
+      if (atStart || atEnd) {
+        const scrollToNext = () => {
+          try {
+            // Scroll the window by one viewport height to reach next section
+            window.scrollBy({ top: direction === 'down' ? window.innerHeight : -window.innerHeight, behavior: 'smooth' });
+            wheelLocked = true;
+            setTimeout(() => { wheelLocked = false; }, lockTime);
+          } catch (err) {
+            // fallback: let default behavior happen
+            return;
+          }
+        };
+
+        // Let a small delta pass-through trigger the programmatic scroll
+        // and do not accumulate wheel deltas here.
+        scrollToNext();
+        return;
+      }
+
+      e.preventDefault();
       wheelAccumulated += e.deltaY;
 
       if (Math.abs(wheelAccumulated) >= WHEEL_THRESHOLD) {
-        handleScroll(wheelAccumulated > 0 ? "down" : "up");
+        handleScroll(direction);
         wheelAccumulated = 0;
         wheelLocked = true;
 
@@ -476,7 +385,7 @@
 
     window.addEventListener("keydown", (e) => {
       const rect = scrollArea.getBoundingClientRect();
-      if (rect.top > 1 || rect.bottom < window.innerHeight - 1) return;
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
       if (scrolling) return;
 
       if (e.key === "ArrowDown") {
@@ -498,7 +407,16 @@
     scrollArea.addEventListener("touchend", (e) => {
       const diff = touchStartY - e.changedTouches[0].clientY;
       if (Math.abs(diff) < swipeThreshold) return;
-      handleScroll(diff > 0 ? "down" : "up");
+      const direction = diff > 0 ? "down" : "up";
+      if (!loopWheel && ((current === total - 1 && direction === "down") || (current === 0 && direction === "up"))) {
+        // When swiping beyond the last/first slide, programmatically
+        // scroll to the next/previous section so the page continues.
+        const scrollTop = direction === 'down' ? window.innerHeight : -window.innerHeight;
+        window.scrollBy({ top: scrollTop, behavior: 'smooth' });
+        return;
+      }
+
+      handleScroll(direction);
     }, { passive: true });
 
     applyRotation();
@@ -524,41 +442,89 @@
     },
     {
       "type": "image_picker",
-      "id": "parallax_left_desktop",
-      "label": "Parallax Left Image (Desktop)"
+      "id": "background_image",
+      "label": "Background Image"
     },
     {
-      "type": "image_picker",
-      "id": "parallax_right_desktop",
-      "label": "Parallax Right Image (Desktop)"
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#e2f4fc"
     },
     {
-      "type": "image_picker",
-      "id": "parallax_center_desktop",
-      "label": "Parallax Center Image (Desktop)"
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
     },
     {
-      "type": "image_picker",
-      "id": "fixed_background",
-      "label": "Fixed Background Image"
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#193d71"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Font Size (px)",
+      "default": 48,
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#193d71"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#fee000"
+    },
+    {
+      "type": "range",
+      "id": "product_scale",
+      "label": "Product size",
+      "min": 60,
+      "max": 120,
+      "step": 5,
+      "unit": "%",
+      "default": 100
     },
     {
       "type": "checkbox",
       "id": "wheel_loop",
       "label": "Loop wheel when reaching ends",
-      "default": true
+      "default": false
     },
     {
-      "type": "number",
+      "type": "range",
       "id": "wheel_threshold",
       "label": "Wheel scroll threshold (px)",
-      "default": 160
+      "default": 160,
+      "min": 60,
+      "max": 400,
+      "step": 10,
+      "unit": "px"
     },
     {
-      "type": "number",
+      "type": "range",
       "id": "wheel_lock_time",
       "label": "Wheel lock time (ms)",
-      "default": 650
+      "default": 650,
+      "min": 250,
+      "max": 2000,
+      "step": 50,
+      "unit": "ms"
     }
   ],
   "blocks": [
