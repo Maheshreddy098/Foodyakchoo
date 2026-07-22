@@ -16,7 +16,7 @@
     "enable_rtl": true,
     "favicon": "",
     "logo": "shopify://shop_images/logo-mob.webp",
-    "logo_width": 116,
+    "logo_width": 100,
     "body_font": "instrument_sans_n5",
     "heading_font": "instrument_sans_n6",
     "subheading_weight": "500",

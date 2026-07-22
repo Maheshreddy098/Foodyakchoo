@@ -162,7 +162,7 @@
         "show_offer": true,
         "transparent": false,
         "header_text_icon_transparent": "#ffffff",
-        "padding_top": 20,
+        "padding_top": 26,
         "padding_bottom": 20
       }
     }

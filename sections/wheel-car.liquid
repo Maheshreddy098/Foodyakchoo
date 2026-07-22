@@ -1,13 +1,21 @@
+{{ 'wheel.css' | asset_url | stylesheet_tag }}
 {%- assign section_st = section.settings -%}
 
 <section class="yakchoo-hero scroll-area" data-section-id="{{ section.id }}">
-  <section
+<!--Dynamic settings storage -->  
+<section
     class="scroll-rotate-section"
     data-wheel-loop="{{ section_st.wheel_loop }}"
     data-wheel-threshold="{{ section_st.wheel_threshold }}"
     data-wheel-lock-time="{{ section_st.wheel_lock_time }}"
-    style="{% if section_st.background_image != blank %}background-image: url('{{ section_st.background_image | image_url: width: 2048 }}'); background-size: cover; background-position: center; background-repeat: no-repeat;{% elsif section_st.background_color != blank %}background-color: {{ section_st.background_color }};{% endif %}"
-  >
+    style="{% if section_st.background_image != blank %}
+    background-image: url('{{ section_st.background_image | image_url: width: 2048 }}');
+     background-size: cover; 
+     background-position: center;
+      background-repeat: no-repeat;
+      {% elsif section_st.background_color != blank %}
+      background-color: {{ section_st.background_color }};
+      {% endif %}">
     <section class="banner-section">
       <!-- TEXT SLIDER -->
       <div class="banner-content-div" style="text-align: {{ section_st.content_alignment }};">
@@ -27,9 +35,13 @@
       </a>
 
       <!-- PRODUCT WHEEL -->
-      <div class="banner-circle-box" style="width: calc(70vh * {{ section_st.product_scale | default: 100 }} / 100); height: calc(70vh * {{ section_st.product_scale | default: 100 }} / 100); top: 100%; transform: translate(-50%, -15%) scale(1.3);">
+      <div class="banner-circle-box" style="width: calc(70vh * {{ section_st.product_scale | default: 100 }} / 100); 
+      height: calc(70vh * {{ section_st.product_scale | default: 100 }} / 100);
+       top: 100%; 
+       transform: translate(-50%, -15%) 
+       scale(1.3);">
         <div class="banner-circle" data-behavior="banner-circle">
-          {% assign default_images = 'https://yakchoo.com/wp-content/themes/yakchu/img/banner-scroll-img1.webp,https://yakchoo.com/wp-content/themes/yakchu/img/banner-scroll-img2.webp,https://yakchoo.com/wp-content/themes/yakchu/img/banner-scroll-img3.webp' | split: ',' %}
+          {% assign default_images = '' | split: ',' %}
           {% for block in section.blocks %}
             {% if block.type == 'product' %}
               {% assign fallback_image = default_images[forloop.index0] %}
@@ -47,329 +59,7 @@
     </section>
   </section>
 </section>
-
-<style>
-
-  .yakchoo-hero {
-    --color-primary: #193d71;
-    --color-accent: #fee000;
-    position: relative;
-    width: 100%;
-    overflow-x: hidden;
-  }
-
-  .scroll-area {
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .scroll-rotate-section {
-    position: relative;
-    height: 100%;
-    overflow-x: hidden;
-  }
-
-  .banner-section {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 160px 0 0 0;
-  }
-
-  .banner-content-div {
-    width: 420px;
-    height: 160px;
-    overflow: hidden;
-    z-index: 10;
-    margin-left: 0;
-  }
-
-  .banner-content-wrapper {
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.4s ease-out;
-  }
-
-  .banner-content {
-    height: 160px;
-    display: flex;
-    align-items: center;
-  }
-
-  .banner-content h2 {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    line-height: 1.1;
-    max-width: 366px;
-    text-transform: uppercase;
-    margin: 0;
-  }
-
-  .know-btn {
-    padding: 15px 28px;
-    border-radius: 42px;
-    background-color: var(--color-primary);
-    font-family: var(--font-heading);
-    color: var(--color-accent);
-    text-decoration: none;
-    font-size: 18px;
-    line-height: 1;
-    font-weight: 600;
-    margin-top: 20px;
-    cursor: pointer;
-    position: relative;
-    z-index: 30;
-    transition: all 0.3s ease;
-    display: inline-block;
-  }
-
-  .know-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(25, 61, 113, 0.2);
-  }
-
-  .banner-circle-box {
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    transform: translate(-50%, -15%) scale(1.3);
-    perspective: 2000px;
-    width: calc(70vh * var(--product-scale, 1));
-    height: calc(70vh * var(--product-scale, 1));
-  }
-
-  .banner-circle {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 1s ease-out;
-  }
-
-  .banner-item {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: hidden;
-    transition: transform 1s ease-out, opacity 0.3s ease;
-  }
-
-  .banner-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .banner-item-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    background: rgba(0,0,0,0.18);
-    font-size: 14px;
-    text-align: center;
-    padding: 20px;
-  }
-
-  @media (max-width: 1024px) {
-    .banner-circle-box {
-      width: 60vh;
-      height: 60vh;
-    }
-
-    .banner-content h2 {
-      font-size: 36px;
-      max-width: 300px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .banner-section {
-      padding: 100px 0 0 0;
-    }
-
-    .banner-content-div {
-      width: 100%;
-      height: auto;
-      padding: 0 20px;
-    }
-
-    .banner-content {
-      height: auto;
-      min-height: 120px;
-    }
-
-    .banner-content h2 {
-      font-size: 28px;
-      max-width: 100%;
-    }
-
-    .know-btn {
-      margin-left: 20px;
-      margin-top: 15px;
-      padding: 12px 24px;
-      font-size: 14px;
-    }
-
-    .banner-circle-box {
-      width: 50vh;
-      height: 50vh;
-      top: 80%;
-      transform: translate(-50%, -50%) scale(1.2);
-    }
-  }
-</style>
-
-<script>
-  (function() {
-    function initWheelCar(sectionRoot) {
-      if (!sectionRoot || sectionRoot.dataset.wheelCarInit === 'true') return;
-      sectionRoot.dataset.wheelCarInit = 'true';
-
-      const circle = sectionRoot.querySelector('[data-behavior="banner-circle"]');
-      const items = sectionRoot.querySelectorAll('.banner-item');
-      const textSlides = sectionRoot.querySelectorAll('.banner-content');
-      const scrollArea = sectionRoot.classList.contains('scroll-area') ? sectionRoot : sectionRoot.querySelector('.scroll-area');
-      const sectionEl = sectionRoot.querySelector('.scroll-rotate-section');
-
-      if (!circle || !items.length || !textSlides.length || !sectionEl) return;
-      if (!scrollArea) {
-        return; // section not ready, abort safely
-      }
-
-      const loopWheel = sectionEl.dataset.wheelLoop === 'true';
-      const WHEEL_THRESHOLD = parseInt(sectionEl.dataset.wheelThreshold, 10) || 160;
-      const lockTime = parseInt(sectionEl.dataset.wheelLockTime, 10) || 650;
-
-      let current = 0;
-      let scrolling = false;
-      const total = items.length;
-      const angleGap = 360 / total;
-      const radius = '-32vh';
-
-      function updateTextSlides() {
-        const activeTextIndex = textSlides.length ? current % textSlides.length : 0;
-        textSlides.forEach((slide, index) => {
-          slide.style.display = index === activeTextIndex ? 'flex' : 'none';
-        });
-      }
-
-      function applyRotation() {
-        circle.style.transform = `rotate(${-current * angleGap}deg)`;
-        updateTextSlides();
-
-        items.forEach((item, i) => {
-          item.style.opacity = i === current ? '1' : '0';
-          item.style.transform = `translate(-50%, -50%) rotate(${i * angleGap}deg) translateY(${radius}) scale(${i === current ? 1.05 : 0.96})`;
-          item.style.zIndex = i === current ? '10' : '1';
-        });
-      }
-
-      function handleScroll(direction) {
-        if (scrolling) return;
-        if (!loopWheel && ((current === total - 1 && direction === 'down') || (current === 0 && direction === 'up'))) {
-          return;
-        }
-
-        scrolling = true;
-        current += direction === 'down' ? 1 : -1;
-
-        if (current < 0) current = loopWheel ? total - 1 : 0;
-        if (current >= total) current = loopWheel ? 0 : total - 1;
-
-        applyRotation();
-        setTimeout(() => { scrolling = false; }, lockTime);
-      }
-
-      let wheelAccumulated = 0;
-      let wheelLocked = false;
-
-      function isSectionVisible() {
-        const rect = scrollArea.getBoundingClientRect();
-        return rect.bottom >= 0 && rect.top <= window.innerHeight;
-      }
-
-      window.addEventListener('wheel', function(e) {
-        if (!isSectionVisible() || scrolling || wheelLocked) return;
-
-        wheelAccumulated += e.deltaY;
-        const direction = wheelAccumulated > 0 ? 'down' : 'up';
-
-        if (Math.abs(wheelAccumulated) >= WHEEL_THRESHOLD) {
-          e.preventDefault();
-          if (!loopWheel && ((current === total - 1 && direction === 'down') || (current === 0 && direction === 'up'))) {
-            wheelAccumulated = 0;
-            return;
-          }
-
-          handleScroll(direction);
-          wheelAccumulated = 0;
-          wheelLocked = true;
-          setTimeout(() => { wheelLocked = false; }, lockTime);
-        }
-      }, { passive: false });
-
-      window.addEventListener('keydown', function(e) {
-        if (!isSectionVisible() || scrolling) return;
-
-        if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          handleScroll('down');
-        } else if (e.key === 'ArrowUp') {
-          e.preventDefault();
-          handleScroll('up');
-        }
-      }, { passive: false });
-
-      let touchStartY = 0;
-      const swipeThreshold = 80;
-
-      scrollArea.addEventListener('touchstart', function(e) {
-        touchStartY = e.touches[0].clientY;
-      }, { passive: true });
-
-      scrollArea.addEventListener('touchend', function(e) {
-        const diff = touchStartY - e.changedTouches[0].clientY;
-        if (Math.abs(diff) < swipeThreshold) return;
-        const direction = diff > 0 ? 'down' : 'up';
-        if (!loopWheel && ((current === total - 1 && direction === 'down') || (current === 0 && direction === 'up'))) {
-          return;
-        }
-        handleScroll(direction);
-      }, { passive: true });
-
-      updateTextSlides();
-      applyRotation();
-    }
-
-    function initSection(event) {
-      const sectionRoot = event && event.target && event.target.dataset && event.target.dataset.sectionId
-        ? event.target
-        : document.querySelector('[data-section-id="{{ section.id }}"]');
-      initWheelCar(sectionRoot);
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initSection);
-    } else {
-      initSection();
-    }
-
-    document.addEventListener('shopify:section:load', initSection);
-  })();
-</script>
-
+<script src="{{ 'wheel1.js' | asset_url }}" defer></script>
 {% schema %}
 {
   "name": "Yakchoo Hero Wheel",

@@ -9,6 +9,73 @@
  */
 {
   "sections": {
+    "wheel-car": {
+      "type": "wheel-car",
+      "blocks": {
+        "product_ABdLH9": {
+          "type": "product",
+          "name": "images",
+          "settings": {
+            "product_image": "shopify://shop_images/banner-scroll-img1.webp"
+          }
+        },
+        "product_XLnwUX": {
+          "type": "product",
+          "name": "images",
+          "settings": {
+            "product_image": "shopify://shop_images/banner-scroll-img2.webp"
+          }
+        },
+        "product_bdMHLe": {
+          "type": "product",
+          "name": "images",
+          "settings": {
+            "product_image": "shopify://shop_images/banner-scroll-img3.webp"
+          }
+        },
+        "text_1": {
+          "type": "text",
+          "settings": {
+            "text": "BORN IN THE HIMALAYAS, LOVED EVERYWHERE"
+          }
+        },
+        "text_VYctW8": {
+          "type": "text",
+          "settings": {
+            "text": "MANIFESTING HEALTH & HAPPINESS FOR OUR FURRY FRIENDS"
+          }
+        },
+        "text_cMNqhQ": {
+          "type": "text",
+          "settings": {
+            "text": "YAK CHEESE CHEWS, MADE IN THE HIMALAYAS WITH REAL YAK MILK"
+          }
+        }
+      },
+      "block_order": [
+        "product_ABdLH9",
+        "product_XLnwUX",
+        "product_bdMHLe",
+        "text_1",
+        "text_VYctW8",
+        "text_cMNqhQ"
+      ],
+      "settings": {
+        "button_label": "SHOP ALL",
+        "button_link": "shopify://collections/all",
+        "background_image": "shopify://shop_images/benifit-sec-bg.webp",
+        "background_color": "#e2f4fc",
+        "content_alignment": "left",
+        "heading_color": "#193d71",
+        "heading_size": 26,
+        "button_bg_color": "#193d71",
+        "button_text_color": "#fee000",
+        "product_scale": 110,
+        "wheel_loop": true,
+        "wheel_threshold": 160,
+        "wheel_lock_time": 650
+      }
+    },
     "flexible_section_qLGCpK": {
       "type": "flexible-section",
       "blocks": {
@@ -67,6 +134,7 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
+                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -140,6 +208,7 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
+                    "image_block": "shopify://shop_images/Copilot_20260708_174108.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -213,6 +282,7 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
+                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -286,6 +356,7 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
+                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -359,6 +430,7 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
+                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -432,6 +504,7 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
+                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -504,77 +577,13 @@
         "show_divider": false
       }
     },
-    "wheel-car": {
-      "type": "wheel-car",
-      "blocks": {
-        "text_1": {
-          "type": "text",
-          "settings": {
-            "text": "Manifesting Health & Happiness for our Furry Friends"
-          }
-        },
-        "text_2": {
-          "type": "text",
-          "settings": {
-            "text": "Born in the Himalayas, Loved Everywhere"
-          }
-        },
-        "text_3": {
-          "type": "text",
-          "settings": {
-            "text": "Yak Cheese Chews, Made in the Himalayas with Real Yak Milk"
-          }
-        },
-        "product_1": {
-          "type": "product",
-          "settings": {
-            "product_image": ""
-          }
-        },
-        "product_2": {
-          "type": "product",
-          "settings": {
-            "product_image": ""
-          }
-        },
-        "product_3": {
-          "type": "product",
-          "settings": {
-            "product_image": ""
-          }
-        }
-      },
-      "block_order": [
-        "text_1",
-        "text_2",
-        "text_3",
-        "product_1",
-        "product_2",
-        "product_3"
-      ],
-      "settings": {
-        "button_label": "KNOW MORE",
-        "button_link": "#",
-        "background_image": "",
-        "background_color": "#e2f4fc",
-        "content_alignment": "left",
-        "heading_color": "#193d71",
-        "heading_size": 48,
-        "button_bg_color": "#193d71",
-        "button_text_color": "#fee000",
-        "product_scale": 100,
-        "wheel_loop": false,
-        "wheel_threshold": 160,
-        "wheel_lock_time": 650
-      }
-    },
     "product_tabs_AX9mcp": {
       "type": "product-tabs",
       "blocks": {
         "tab_yig6xF": {
           "type": "tab",
           "settings": {
-            "collection": "",
+            "collection": "soft-treats",
             "collection_title": "Best Seller",
             "collection_description": ""
           }
