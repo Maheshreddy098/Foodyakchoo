@@ -3927,6 +3927,14 @@ countdown-timer.section_block.default .countdown-container {
   .text-bellow-mb > .banner__media {
     position: relative;
   }
+  .section__slideshow {
+  /* Ensure the section never grows taller than the browser window */
+  max-height: 100vh;
+  overflow: hidden;               /* hide anything that would spill */
+}
+.section__slideshow .swiper-slide {
+  max-height: 100vh;
+}
   .text-bellow-mb > .media__content .banner__box {
     padding-inline: 0;
     padding-block: 0;

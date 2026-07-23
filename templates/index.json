@@ -7,10 +7,11 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
-    "wheel-car": {
-      "type": "wheel-car",
+    
+    "home-page": {
+      "type": "home-page",
       "blocks": {
         "product_ABdLH9": {
           "type": "product",
@@ -60,6 +61,7 @@
         "text_VYctW8",
         "text_cMNqhQ"
       ],
+      
       "settings": {
         "button_label": "SHOP ALL",
         "button_link": "shopify://collections/all",
@@ -2094,7 +2096,7 @@
     }
   },
   "order": [
-    "wheel-car",
+    "home-page",
     "flexible_section_qLGCpK",
     "product_tabs_AX9mcp",
     "collection_highlights_zUbL8r",
