@@ -1,34 +1,34 @@
 .yakchoo-hero {
-    --color-primary: #193d71;
-    --color-accent: #fee000;
-    position: relative;
-    width: 100%;
-    overflow-x: hidden;
-  }
+  --color-primary: #193d71;
+  --color-accent: #fee000;
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
 
-  .scroll-area {
-    min-height: 100svh;
-    height: 100svh;
-    overflow: hidden;
-  }
+.scroll-area {
+  min-height: 86svh;
+  height: 86svh;
+  overflow: hidden;
+}
 
-  .hero-wheel-lock {
-    overflow: hidden !important;
-  }
+.hero-wheel-lock {
+  overflow: hidden !important;
+}
 
-  .scroll-rotate-section {
-    position: relative;
-    min-height: 100svh;
-    height: 100%;
-    overflow-x: hidden;
-  }
+.scroll-rotate-section {
+  position: relative;
+  min-height: 86svh;
+  height: 86svh;
+  overflow-x: hidden;
+}
 
-  .banner-section {
+.banner-section {
   position: sticky;
   top: 0;
   width: 100%;
-  min-height:100svh ;
-  height: 100svh;
+  min-height: 86svh;
+  height: 86svh;
   overflow: hidden;
   display: flex;
   justify-content: flex-start;
@@ -36,177 +36,333 @@
   flex-direction: column;
 
   /* Change this */
-  padding: clamp(5px, 2vh, 30px) 0 0 0;;
+  padding: clamp(150px, 18vh, 180px) 0 0 0;
 }
 
-  .banner-content-div {
-    width: min(420px, calc(100vw - 40px));
-    max-width: calc(100vw - 40px);
-    height: 160px;
-    overflow: hidden;
-    z-index: 10;
-    margin-left: 0;
-  }
+.banner-content-div {
+  width: min(420px, calc(100vw - 40px));
+  max-width: calc(100vw - 40px);
+  height: 160px;
+  overflow: hidden;
+  z-index: 10;
+  margin-left: 40px;
+}
 
-  .banner-content-wrapper {
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.4s ease-out;
-  }
+.banner-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s ease-out;
+}
 
-  .banner-content {
-    height: 160px;
-    display: flex;
-    align-items: center;
+.banner-content {
+  height: 160px;
+  display: flex;
+  align-items: center;
+}
+
+.banner-content h2 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.1;
+  font-size: clamp(28px, 4.2vw, 36px);
+  max-width: 366px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.know-btn {
+  padding: 15px 28px;
+  border-radius: 42px;
+  background-color: var(--color-primary);
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 600;
+  margin-top: 50px;
+  margin-left: 60px;
+  cursor: pointer;
+  position: relative;
+  z-index: 30;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.know-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(25, 61, 113, 0.2);
+}
+
+.banner-circle-box {
+  position: absolute;
+  left: 50%;
+  top: 104%;
+  transform: translate(-50%, -15%) scale(1.3);
+  perspective: 2000px;
+  width: min(90svh, 70vw);
+  height: min(78svh, 70vw);
+}
+
+.banner-circle {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s ease-out;
+}
+
+.banner-item {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  transition:
+    transform 1s ease-out,
+    opacity 0.3s ease;
+}
+
+.banner-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-item-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.18);
+  font-size: 14px;
+  text-align: center;
+  padding: 10px;
+}
+
+@media (max-width: 1024px) {
+  .banner-circle-box {
+    width: min(60svh, 62vw);
+    height: min(60svh, 62vw);
   }
 
   .banner-content h2 {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    line-height: 1.1;
-    font-size: clamp(28px, 4.2vw, 36px);
-    max-width: 366px;
-    text-transform: uppercase;
-    margin: 0;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-section {
+    padding: 40px 0 0 0;
+  }
+
+  .banner-content-div {
+    width: min(100%, calc(100vw - 40px));
+    height: auto;
+    padding: 0 40px;
+  }
+
+  .banner-content {
+    height: auto;
+    min-height: 120px;
+  }
+
+  .banner-content h2 {
+    max-width: 100%;
   }
 
   .know-btn {
-    padding: 15px 28px;
-    border-radius: 42px;
-    background-color: var(--color-primary);
-    font-family: var(--font-heading);
-    color: var(--color-accent);
-    text-decoration: none;
-    font-size: 18px;
-    line-height: 1;
-    font-weight: 600;
-    margin-top: 50px;
-    cursor: pointer;
-    position: relative;
-    z-index: 30;
-    transition: all 0.3s ease;
-    display: inline-block;
-  }
-
-  .know-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(25, 61, 113, 0.2);
+    margin-left: 40px;
+    margin-top: 15px;
+    padding: 12px 24px;
+    font-size: 14px;
+    align-self: flex-start;
   }
 
   .banner-circle-box {
-    position: absolute;
-    left: 50%;
-    top: 110%;
-    transform: translate(-50%, -15%) scale(1.3);
-    perspective: 2000px;
-    width: min(90svh, 70vw);
-    height: min(78svh, 70vw);
+    width: min(45svh, 60vw);
+    height: min(45svh, 60vw);
+    top: 80%;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+@media (orientation: landscape) and (max-width: 900px) {
+  .scroll-area,
+  .scroll-rotate-section,
+  .banner-section {
+    min-height: 100svh;
+    height: 100svh;
   }
 
-  .banner-circle {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 1s ease-out;
+  .banner-section {
+    padding-top: 70px;
   }
 
-  .banner-item {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: hidden;
-    transition: transform 1s ease-out, opacity 0.3s ease;
+  .banner-content-div {
+    height: 110px;
   }
 
-  .banner-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .banner-circle-box {
+    width: min(46svh, 58vw);
+    height: min(46svh, 58vw);
+    top: 82%;
+  }
+}
+/*====================================================
+=            YAKCHOO INTRO ANIMATION
+=====================================================*/
+
+.yakchoo-intro {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 99999;
+  background: #d8eef7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#hero-content {
+  opacity: 1;
+  visibility: hidden;
+  transition: opacity 0.8s ease;
+}
+
+#hero-content.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* LOGO */
+
+.intro-logo-wrap {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+
+.intro-logo {
+  width: 160px;
+  max-width: 18vw;
+  transform: scale(0.75);
+  opacity: 0;
+}
+
+/* LEFT MOUNTAIN */
+
+.intro-left {
+  position: absolute;
+  left: 50%;
+  bottom: 14%;
+  width: 42vw;
+  max-width: 720px;
+  transform: translateX(-100%);
+  z-index: 8;
+}
+
+/* RIGHT MOUNTAIN */
+
+.intro-right {
+  position: absolute;
+  right: 50%;
+  bottom: 14%;
+  width: 42vw;
+  max-width: 720px;
+  transform: translateX(100%);
+  z-index: 8;
+}
+
+/* BOTTOM SNOW */
+
+.intro-bottom {
+  position: absolute;
+  left: 50%;
+  bottom: -100%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 15;
+}
+
+/* hide after animation */
+
+.yakchoo-intro.hide {
+  pointer-events: none;
+
+  animation: introFade 0.8s forwards;
+}
+/*====================================================
+KEYFRAMES
+=====================================================*/
+
+@keyframes logoAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.75);
   }
 
-  .banner-item-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    background: rgba(0,0,0,0.18);
-    font-size: 14px;
-    text-align: center;
-    padding: 10px;
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes logoZoom {
+  from {
+    transform: scale(1);
   }
 
-  @media (max-width: 1024px) {
-    .banner-circle-box {
-      width: min(60svh, 62vw);
-      height: min(60svh, 62vw);
-    }
+  to {
+    transform: scale(1.18);
+  }
+}
 
-    .banner-content h2 {
-      max-width: 300px;
-    }
+@keyframes mountainLeft {
+  from {
+    transform: translateX(0);
   }
 
-  @media (max-width: 768px) {
-    .banner-section {
-      padding: 40px 0 0 0;
-    }
+  to {
+    transform: translateX(-115%);
+  }
+}
 
-    .banner-content-div {
-      width: min(100%, calc(100vw - 40px));
-      height: auto;
-      padding: 0 20px;
-    }
-
-    .banner-content {
-      height: auto;
-      min-height: 120px;
-    }
-
-    .banner-content h2 {
-      max-width: 100%;
-    }
-
-    .know-btn {
-      margin-left: 20px;
-      margin-top: 15px;
-      padding: 12px 24px;
-      font-size: 14px;
-      align-self: flex-start;
-    }
-
-    .banner-circle-box {
-      width: min(45svh, 60vw);
-      height: min(45svh, 60vw);
-      top: 80%;
-      transform: translate(-50%, -50%) scale(1.2);
-    }
+@keyframes mountainRight {
+  from {
+    transform: translateX(0);
   }
 
-  @media (orientation: landscape) and (max-width: 900px) {
-    .scroll-area,
-    .scroll-rotate-section,
-    .banner-section {
-      min-height: 100svh;
-      height: 100svh;
-    }
-
-    .banner-section {
-      padding-top: 70px;
-    }
-
-    .banner-content-div {
-      height: 110px;
-    }
-
-    .banner-circle-box {
-      width: min(46svh, 58vw);
-      height: min(46svh, 58vw);
-      top: 82%;
-    }
+  to {
+    transform: translateX(115%);
   }
+}
+
+@keyframes snowUp {
+  from {
+    bottom: -100%;
+  }
+
+  to {
+    bottom: 0;
+  }
+}
+
+@keyframes introFade {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

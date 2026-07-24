@@ -1,195 +1,278 @@
 console.log("home.js loaded");
 
 (function () {
+  /* ==========================
+     YAKCHOO INTRO ANIMATION
+  ========================== */
+
+  function initIntro() {
+    const intro = document.getElementById("yakchoo-intro");
+
+    if (!intro) {
+      initWheelCar();
+      return;
+    }
+
+    const logo = intro.querySelector(".intro-logo");
+    const left = intro.querySelector(".intro-left");
+    const right = intro.querySelector(".intro-right");
+    const bottom = intro.querySelector(".intro-bottom");
+
+    function playIntro() {
+      intro.style.display = "block";
+      intro.classList.remove("hide");
+
+      if (logo) logo.classList.remove("zoom");
+      if (left) left.classList.remove("open-left");
+      if (right) right.classList.remove("open-right");
+      if (bottom) bottom.classList.remove("rise");
+
+      void intro.offsetWidth;
+
+      // Logo Zoom
+      setTimeout(function () {
+        if (logo) logo.classList.add("zoom");
+      }, 300);
+
+      // Mountains Open
+      setTimeout(function () {
+        if (left) left.classList.add("open-left");
+        if (right) right.classList.add("open-right");
+      }, 1300);
+
+      // Bottom Mountain
+      setTimeout(function () {
+        if (bottom) bottom.classList.add("rise");
+      }, 2200);
+
+      // Hide Intro
+      setTimeout(function () {
+        intro.classList.add("hide");
+      }, 3200);
+
+      // Finish Intro + Start Wheel
+      setTimeout(function () {
+        intro.style.display = "none";
+
+        initWheelCar();
+      }, 3800);
+    }
+
+    playIntro();
+
+    // Replay intro on logo click
+
+    document.addEventListener("click", function (e) {
+      const logoBtn =
+        e.target.closest(".header__heading-link") ||
+        e.target.closest(".header__heading") ||
+        e.target.closest(".header__logo") ||
+        e.target.closest(".site-logo");
+
+      if (!logoBtn) return;
+
+      e.preventDefault();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+
+      setTimeout(function () {
+        playIntro();
+      }, 500);
+    });
+  }
+
+  /* ==========================
+      WHEEL CAR ANIMATION
+  ========================== */
+
   function initWheelCar(sectionRoot) {
+    if (!sectionRoot) {
+      sectionRoot = document.querySelector(".yakchoo-hero");
+    }
+
     if (!sectionRoot || sectionRoot.dataset.wheelCarInit === "true") return;
+
     sectionRoot.dataset.wheelCarInit = "true";
 
     const circle = sectionRoot.querySelector('[data-behavior="banner-circle"]');
+
     const items = sectionRoot.querySelectorAll(".banner-item");
+
     const textSlides = sectionRoot.querySelectorAll(".banner-content");
+
     const scrollArea = sectionRoot.classList.contains("scroll-area")
       ? sectionRoot
       : sectionRoot.querySelector(".scroll-area");
+
     const sectionEl = sectionRoot.querySelector(".scroll-rotate-section");
 
-    if (!circle || !items.length || !textSlides.length || !sectionEl) return;
-    if (!scrollArea) return;
+    if (
+      !circle ||
+      !items.length ||
+      !textSlides.length ||
+      !sectionEl ||
+      !scrollArea
+    )
+      return;
 
-    const loopWheel = sectionEl.dataset.wheelLoop === "true";
     const WHEEL_THRESHOLD =
       parseInt(sectionEl.dataset.wheelThreshold, 10) || 160;
+
     const lockTime = parseInt(sectionEl.dataset.wheelLockTime, 10) || 650;
 
     let current = 0;
     let scrolling = false;
     let wheelAccumulated = 0;
     let wheelLocked = false;
+    let lastSlideScroll = 0;
 
     const total = items.length;
+
     const angleGap = 360 / total;
+
     const radius = "-32vh";
 
     function updateTextSlides() {
-      const activeTextIndex = textSlides.length
-        ? current % textSlides.length
-        : 0;
-      textSlides.forEach((slide, index) => {
-        slide.style.display = index === activeTextIndex ? "flex" : "none";
+      const active = current % textSlides.length;
+
+      textSlides.forEach((slide, i) => {
+        slide.style.display = i === active ? "flex" : "none";
       });
     }
 
     function applyRotation() {
       circle.style.transform = `rotate(${-current * angleGap}deg)`;
-      updateTextSlides();
 
       items.forEach((item, i) => {
         item.style.opacity = i === current ? "1" : "0";
-        item.style.transform = `translate(-50%, -50%) rotate(${i * angleGap}deg) translateY(${radius}) scale(${i === current ? 1.05 : 0.96})`;
+
+        item.style.transform = `translate(-50%, -50%)
+        rotate(${i * angleGap}deg)
+        translateY(${radius})
+        scale(${i === current ? 1.05 : 0.96})`;
+
         item.style.zIndex = i === current ? "10" : "1";
       });
+
+      updateTextSlides();
+    }
+
+    function updatePageLock() {
+      document.body.classList.toggle(
+        "hero-wheel-lock",
+        current < total - 1 || lastSlideScroll === 0,
+      );
     }
 
     function handleScroll(direction) {
       if (scrolling) return;
 
-      if (
-        !loopWheel &&
-        ((current === total - 1 && direction === "down") ||
-          (current === 0 && direction === "up"))
-      ) {
-        return;
-      }
-
       scrolling = true;
-      current += direction === "down" ? 1 : -1;
 
-      if (current < 0) current = loopWheel ? total - 1 : 0;
-      if (current >= total) current = loopWheel ? 0 : total - 1;
+      wheelAccumulated = 0;
+
+      wheelLocked = true;
+
+      if (direction === "down") {
+        if (current < total - 1) {
+          current++;
+
+          lastSlideScroll = 0;
+        } else {
+          lastSlideScroll++;
+
+          if (lastSlideScroll >= 1) {
+            document.body.classList.remove("hero-wheel-lock");
+          }
+        }
+      } else {
+        if (current > 0) {
+          current--;
+
+          lastSlideScroll = 0;
+        }
+      }
 
       applyRotation();
 
+      updatePageLock();
+
       setTimeout(() => {
         scrolling = false;
+
+        wheelLocked = false;
+
+        wheelAccumulated = 0;
       }, lockTime);
     }
 
     function isSectionVisible() {
       const rect = scrollArea.getBoundingClientRect();
-      return rect.bottom >= 0 && rect.top <= window.innerHeight;
+
+      return rect.top <= window.innerHeight && rect.bottom >= 0;
     }
 
-    function isPointerInsideHero(clientX, clientY) {
+    function isPointerInsideHero(x, y) {
       const rect = scrollArea.getBoundingClientRect();
-      return (
-        clientX >= rect.left &&
-        clientX <= rect.right &&
-        clientY >= rect.top &&
-        clientY <= rect.bottom
-      );
-    }
 
-    function updatePageLock() {
-      document.body.classList.toggle("hero-wheel-lock", current < total - 1);
+      return (
+        x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
+      );
     }
 
     updatePageLock();
 
-    window.addEventListener(
+    applyRotation();
+
+    scrollArea.addEventListener(
       "wheel",
       function (e) {
-        if (!isSectionVisible() || scrolling || wheelLocked) return;
+        if (!isSectionVisible()) return;
+
         if (!isPointerInsideHero(e.clientX, e.clientY)) return;
 
+        if (scrolling || wheelLocked) return;
+
         wheelAccumulated += e.deltaY;
-        const direction = wheelAccumulated > 0 ? "down" : "up";
 
         if (Math.abs(wheelAccumulated) < WHEEL_THRESHOLD) return;
 
-        const isLast = current === total - 1;
-        const isFirst = current === 0;
+        e.preventDefault();
 
-        if ((direction === "down" && isLast) || (direction === "up" && isFirst)) {
-          wheelAccumulated = 0;
-          updatePageLock();
-          return;
-        }
-
-        if (
-          (direction === "down" && current < total - 1) ||
-          (direction === "up" && current > -1)
-        ) {
-          e.preventDefault();
-          handleScroll(direction);
-          wheelAccumulated = 0;
-          wheelLocked = true;
-
-          setTimeout(() => {
-            wheelLocked = false;
-          }, lockTime);
-
-          updatePageLock();
-        } else {
-          wheelAccumulated = 0;
-          updatePageLock();
-        }
+        handleScroll(wheelAccumulated > 0 ? "down" : "up");
       },
       { passive: false },
     );
 
-
     let touchStartY = 0;
-    const swipeThreshold = 80;
 
-    scrollArea.addEventListener(
-      "touchstart",
-      function (e) {
-        touchStartY = e.touches[0].clientY;
-      },
-      { passive: true },
-    );
+    scrollArea.addEventListener("touchstart", function (e) {
+      touchStartY = e.touches[0].clientY;
+    });
 
-    scrollArea.addEventListener(
-      "touchend",
-      function (e) {
-        const diff = touchStartY - e.changedTouches[0].clientY;
-        if (Math.abs(diff) < swipeThreshold) return;
+    scrollArea.addEventListener("touchend", function (e) {
+      const diff = touchStartY - e.changedTouches[0].clientY;
 
-        const direction = diff > 0 ? "down" : "up";
-        if (
-          !loopWheel &&
-          ((current === total - 1 && direction === "down") ||
-            (current === 0 && direction === "up"))
-        ) {
-          return;
-        }
+      if (Math.abs(diff) < 80) return;
 
-        handleScroll(direction);
-      },
-      { passive: true },
-    );
-
-    updateTextSlides();
-    applyRotation();
+      handleScroll(diff > 0 ? "down" : "up");
+    });
   }
 
-  function initSection(event) {
-    const sectionRoot =
-      event &&
-      event.target &&
-      event.target.dataset &&
-      event.target.dataset.sectionId
-        ? event.target
-        : document.querySelector(".yakchoo-hero");
-
-    initWheelCar(sectionRoot);
-  }
+  /* ==========================
+     START
+  ========================== */
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initSection);
+    document.addEventListener("DOMContentLoaded", initIntro);
   } else {
-    initSection();
+    initIntro();
   }
 
-  document.addEventListener("shopify:section:load", initSection);
+  document.addEventListener("shopify:section:load", function () {
+    initWheelCar();
+  });
 })();

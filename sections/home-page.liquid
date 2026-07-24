@@ -2,6 +2,44 @@
 {%- assign section_st = section.settings -%}
 
   <section class="yakchoo-hero scroll-area" data-section-id="{{ section.id }}">
+  <!-- =========================
+    INTRO ANIMATION
+    ========================== -->
+  <div id="yakchoo-intro" class="yakchoo-intro">
+
+    {% if section_st.intro_logo != blank %}
+      <img
+        class="intro-logo"
+        src="{{ section_st.intro_logo | image_url: width: 1200 }}"
+        alt="Logo">
+    {% endif %}
+
+    {% if section_st.left_mountain != blank %}
+      <img
+        class="intro-left"
+        src="{{ section_st.left_mountain | image_url: width: 1800 }}"
+        alt="">
+    {% endif %}
+
+    {% if section_st.right_mountain != blank %}
+      <img
+        class="intro-right"
+        src="{{ section_st.right_mountain | image_url: width: 1800 }}"
+        alt="">
+    {% endif %}
+
+    {% if section_st.bottom_mountain != blank %}
+      <img
+        class="intro-bottom"
+        src="{{ section_st.bottom_mountain | image_url: width: 2000 }}"
+        alt="">
+    {% endif %}
+
+  </div>
+
+  <!-- =========================
+    MAIN HERO
+    ========================== -->
   <!-- Dynamic settings storage -->
   <section
     class="scroll-rotate-section"
@@ -68,7 +106,7 @@
         </div>
       </div>
     </section>
-  </section>
+  </div>
 </section>
 <script src="{{ 'home.js' | asset_url }}" defer></script>
 {% schema %}
@@ -176,6 +214,22 @@
         "max": 2000,
         "step": 50,
         "unit": "ms"
+      }, {
+        "type": "image_picker",
+        "id": "intro_logo",
+        "label": "Intro Logo"
+      }, {
+        "type": "image_picker",
+        "id": "left_mountain",
+        "label": "Left Mountain"
+      }, {
+        "type": "image_picker",
+        "id": "right_mountain",
+        "label": "Right Mountain"
+      }, {
+        "type": "image_picker",
+        "id": "bottom_mountain",
+        "label": "Bottom Mountain"
       }
     ],
     "blocks": [
