@@ -230,56 +230,48 @@
   align-items: center;
 }
 
-#hero-content {
-  opacity: 1;
-  visibility: hidden;
-  transition: opacity 0.8s ease;
-}
-
-#hero-content.show {
-  opacity: 1;
-  visibility: visible;
-}
-
 /* LOGO */
-
-.intro-logo-wrap {
-  position: absolute;
-  top: 8%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
+.intro-sky{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:1;
 }
+.intro-logo{
+    position:absolute;
+    left:50%;
+    top:32%;
+    width:420px;
+    max-width:40vw;
+  transform:translate(-50%, -50%) scale(1);
 
-.intro-logo {
-  width: 160px;
-  max-width: 18vw;
-  transform: scale(0.75);
-  opacity: 0;
+    opacity:1;
+    z-index:20;
 }
-
 /* LEFT MOUNTAIN */
 
 .intro-left {
   position: absolute;
-  left: 50%;
-  bottom: 14%;
-  width: 42vw;
-  max-width: 720px;
-  transform: translateX(-100%);
-  z-index: 8;
+  bottom: 0;
+  left: 25%;
+  width: 80vw;
+  max-width: none;
+  transform: translateX(-50%);
+  z-index: 10;
+  object-fit: contain;
 }
-
-/* RIGHT MOUNTAIN */
 
 .intro-right {
   position: absolute;
-  right: 50%;
-  bottom: 14%;
-  width: 42vw;
-  max-width: 720px;
-  transform: translateX(100%);
-  z-index: 8;
+  bottom: 0;
+  left: 75%;
+  width: 80vw;
+  max-width: none;
+  transform: translateX(-50%);
+  z-index: 9;
+  object-fit: contain;
 }
 
 /* BOTTOM SNOW */
@@ -287,10 +279,12 @@
 .intro-bottom {
   position: absolute;
   left: 50%;
-  bottom: -100%;
+  bottom: -18%;
   transform: translateX(-50%);
-  width: 100%;
+  width: 130%;
+  max-width: none;
   z-index: 15;
+  object-fit: cover;
 }
 
 /* hide after animation */
@@ -303,66 +297,108 @@
 /*====================================================
 KEYFRAMES
 =====================================================*/
+@keyframes logoMove{
 
-@keyframes logoAppear {
-  from {
-    opacity: 0;
-    transform: scale(0.75);
-  }
+    from{
+        transform:translate(-50%,-50%) scale(1);
+        opacity:1;
+    }
 
-  to {
+  to{
+        transform:translate(-50%,-50%) scale(.85);
+        opacity:1;
+        
+    }
+
+}
+
+@keyframes mountainSplitLeft {
+  0% {
     opacity: 1;
-    transform: scale(1);
+    transform: translateX(-50%);
   }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-190%);
+  }
+
+  
 }
 
-@keyframes logoZoom {
-  from {
-    transform: scale(1);
+@keyframes mountainSplitRight {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%);
   }
 
-  to {
-    transform: scale(1.18);
-  }
-}
-
-@keyframes mountainLeft {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-115%);
-  }
-}
-
-@keyframes mountainRight {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(115%);
+  100% {
+    opacity: 1;
+    transform: translateX(90%);
   }
 }
 
 @keyframes snowUp {
-  from {
-    bottom: -100%;
+  0% {
+    bottom: -60%;
+    opacity: 0;
   }
 
-  to {
-    bottom: 0;
+  100% {
+    bottom: -0%;
+    opacity: 1;
   }
 }
 
 @keyframes introFade {
-  from {
+  0% {
     opacity: 1;
+    visibility: visible;
   }
 
-  to {
-    opacity: 0;
+  100% {
+    opacity: 1;
     visibility: hidden;
   }
+}
+.yakchoo-intro.hide {
+  pointer-events: none;
+  animation: introFade .8s forwards;
+}
+/* ===========================
+   Animation Classes
+=========================== */
+
+.intro-logo.zoom {
+  animation: logoMove 3.2s forwards ease-out;
+}
+
+.intro-left.open-left {
+  animation: mountainSplitLeft 3.4s forwards ease-in-out;
+}
+
+.intro-right.open-right {
+  animation: mountainSplitRight 3.4s forwards ease-in-out;
+}
+
+.intro-bottom.rise {
+  animation: snowUp 1.8s forwards ease-out;
+}
+@media(max-width:768px){
+
+.intro-logo{
+width:120px;
+top:6%;
+}
+
+.intro-left,
+.intro-right{
+width:90vw;
+}
+
+.intro-bottom{
+width:140%;
+bottom:90%;
+}
+
 }

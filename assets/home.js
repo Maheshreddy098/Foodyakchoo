@@ -7,6 +7,7 @@ console.log("home.js loaded");
 
   function initIntro() {
     const intro = document.getElementById("yakchoo-intro");
+    console.log("Intro Found:", intro);
 
     if (!intro) {
       initWheelCar();
@@ -14,14 +15,14 @@ console.log("home.js loaded");
     }
 
     const logo = intro.querySelector(".intro-logo");
+    console.log("Logo Found:", logo);
     const left = intro.querySelector(".intro-left");
     const right = intro.querySelector(".intro-right");
     const bottom = intro.querySelector(".intro-bottom");
 
     function playIntro() {
-      intro.style.display = "block";
+      intro.style.display = "flex";
       intro.classList.remove("hide");
-
       if (logo) logo.classList.remove("zoom");
       if (left) left.classList.remove("open-left");
       if (right) right.classList.remove("open-right");
@@ -34,28 +35,40 @@ console.log("home.js loaded");
         if (logo) logo.classList.add("zoom");
       }, 300);
 
-      // Mountains Open
+      // Mountains Open after logo centers
       setTimeout(function () {
         if (left) left.classList.add("open-left");
         if (right) right.classList.add("open-right");
-      }, 1300);
+      }, 800);
 
-      // Bottom Mountain
+      // Bottom Mountain rises after split
       setTimeout(function () {
         if (bottom) bottom.classList.add("rise");
-      }, 2200);
+      }, 100);
 
       // Hide Intro
       setTimeout(function () {
         intro.classList.add("hide");
-      }, 3200);
+      }, 4300);
+      // Remove intro
+      setTimeout(function () {
+        intro.style.display = "none";
+        initWheelCar();
+      }, 5000);
 
       // Finish Intro + Start Wheel
       setTimeout(function () {
         intro.style.display = "none";
 
+        const hero = document.querySelector(".scroll-rotate-section");
+        if (hero) {
+          hero.style.display = "block";
+          hero.style.visibility = "visible";
+          hero.style.opacity = "1";
+        }
+
         initWheelCar();
-      }, 3800);
+      }, 4700);
     }
 
     playIntro();

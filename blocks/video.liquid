@@ -84,11 +84,11 @@
     {% endcapture %}
     <{{ element }} {{ attributes }}>
       <div class="video-thumbnail overflow-hidden rounded w-full h-full">
-        {%
+          {% assign escaped_alt = alt_description | escape %}
           render 'responsive-image',
           type: 'product',
           image: preview_image,
-          image_alt: alt_description | escape,
+          image_alt: escaped_alt,
           motion: false,
           class: 'w-full h-full object-fit-cover'
         %}
