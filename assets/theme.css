@@ -3928,6 +3928,7 @@ countdown-timer.section_block.default .countdown-container {
     position: relative;
   }
   .section__slideshow {
+
   /* Ensure the section never grows taller than the browser window */
   max-height: 100vh;
   overflow: hidden;               /* hide anything that would spill */
@@ -4376,4 +4377,67 @@ shopable-image {
 
 .header-account-popup:hover shopify-account::part(signed-in-avatar) {
   background: var(--color-background-2);
+}
+.image__media {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-bg-image{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:1;
+}
+
+.product__img{
+    position:relative;
+    z-index:2;
+    width:75%;
+    height:75%;
+    object-fit:contain;
+    margin:auto;
+    display:block;
+}
+.product-custom-bg{
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.product-shape{
+    position:absolute;
+    inset:0;
+    background: radial-gradient(circle at 50% 35%, rgba(255,255,255,0.98), rgba(216,239,255,0.9) 24%, rgba(175,229,255,0.55) 52%, rgba(145,213,255,0.18) 78%, transparent 100%);
+    opacity: 0;
+    transition: opacity .3s ease;
+    z-index:1;
+}
+.product-custom-bg:hover .product-shape {
+    opacity: 1;
+}
+
+.product-custom-bg .product__img{
+    position:relative;
+    z-index:2;
+    width:75%;
+    height:75%;
+    object-fit:contain;
+}
+/* Hover background styles */
+.product-item{position:relative;overflow:hidden;}
+.product-bg-image.hover-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s ease;pointer-events:none;z-index:0;}
+.product-item:hover .product-bg-image.hover-bg{opacity:1;}
+
+.product-bg-always .product-bg-image.hover-bg{opacity:1;}
+.product-bg-soft .product-bg-image.hover-bg{opacity:0.5;transition:opacity .3s ease;}
+.product-bg-soft:hover .product-bg-image.hover-bg{opacity:0.65;}
+.product-bg-mobile{display:none;}
+@media (max-width: 1024.98px) {
+  .product-bg-desktop{display:none;}
+  .product-bg-mobile{display:block;}
 }

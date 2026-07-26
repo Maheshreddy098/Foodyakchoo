@@ -99,8 +99,9 @@
   {% endif %}
 {% endcapture %}
 {% if card_product and card_product != empty %}
+  {% assign bg_style = settings.product_background_style | default: 'hover' %}
   <div
-    class="product-item product__item-js{{ class }}{% if type == 'action_bellow' %} w-full{% endif %}"
+    id="product-card-{{ card_product.id }}" class="product-item product__item-js{{ class }}{% if type == 'action_bellow' %} w-full{% endif %}{% if bg_style != 'none' %} product-bg-{{ bg_style }}{% endif %}"
     data-product-id="{{ card_product.id }}"
     {% if type == 'bought_together' %}
       data-compare-price="{{ compare_at_price }}"
@@ -166,6 +167,48 @@
                 class="image__media product__media animation-swatches{{ image_rounded }}{% if type == 'bought_together' %} h-full{% endif %}"
                 style="--aspect-ratio: {{ aspect_ratio | default: ratio }};"
               >
+              {% assign bg_image = product_background | default: section.settings.product_background %}
+              {% assign bg_image_mobile = blank %}
+              {% assign bg_image_desktop = blank %}
+              {% if bg_image != blank %}
+                {% assign bg_image_desktop = bg_image %}
+                {% assign bg_image_mobile = bg_image %}
+              {% else %}
+                {% case settings.product_background_active %}
+                  {% when 'bg_1' %}
+                    {% assign bg_image_desktop = settings.product_background_1 %}
+                  {% when 'bg_2' %}
+                    {% assign bg_image_desktop = settings.product_background_2 %}
+                  {% when 'bg_3' %}
+                    {% assign bg_image_desktop = settings.product_background_3 %}
+                  {% when 'bg_4' %}
+                    {% assign bg_image_desktop = settings.product_background_4 %}
+                {% endcase %}
+                {% case settings.product_background_active_mobile | default: settings.product_background_active %}
+                  {% when 'bg_1' %}
+                    {% assign bg_image_mobile = settings.product_background_1 %}
+                  {% when 'bg_2' %}
+                    {% assign bg_image_mobile = settings.product_background_2 %}
+                  {% when 'bg_3' %}
+                    {% assign bg_image_mobile = settings.product_background_3 %}
+                  {% when 'bg_4' %}
+                    {% assign bg_image_mobile = settings.product_background_4 %}
+                {% endcase %}
+              {% endif %}
+              {% if bg_image_desktop != blank %}
+                <img
+                  src="{{ bg_image_desktop | image_url: width: 1200 }}"
+                  alt=""
+                  class="product-bg-image product-bg-desktop hover-bg"
+                />
+              {% endif %}
+              {% if bg_image_mobile != blank %}
+                <img
+                  src="{{ bg_image_mobile | image_url: width: 1200 }}"
+                  alt=""
+                  class="product-bg-image product-bg-mobile hover-bg"
+                />
+              {% endif %}
                 {%- assign alt_features = p_media.alt | default: card_product.title | escape -%}
                 {% render 'responsive-image',
                   type: 'product',

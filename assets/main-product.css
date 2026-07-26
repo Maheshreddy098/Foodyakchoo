@@ -527,3 +527,21 @@ video-product-gallery iframe,
 .section__featured-product .block-product__title {
   margin-bottom: 8px;
 }
+.product-custom-bg{
+    position:relative;
+    background:#c8ebff;
+    overflow:hidden;
+}
+
+.product-shape{
+    position:absolute;
+    inset:0;
+    background:url('{{ "product-bg.svg" | asset_url }}') center center no-repeat;
+    background-size:80%;
+    z-index:1;
+}
+
+.product-custom-bg img{
+    position:relative;
+    z-index:2;
+}

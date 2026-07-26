@@ -55,15 +55,28 @@
             endif
           -%}
           {%- if p_media -%}
-            <div class="image__media product__media" style="--aspect-ratio: {{ ratio }};">
-              {% render 'responsive-image',
-                type: 'product',
-                class: 'product__img featured-image',
-                image: p_media,
-                image_alt: alt_features,
-                disable_lazy_loading: true
-              %}
-            </div>
+<div class="image__media product__media product-custom-bg animation-swatches{{ image_rounded }}"
+  style="--aspect-ratio: {{ aspect_ratio | default: ratio }};"
+>
+
+    <div class="product-shape"></div>
+
+    {% render 'responsive-image',
+      type: 'product',
+      class: 'center_swiper-arrow product__img featured-image',
+      image: p_media,
+      image_alt: alt_features,
+      container: container,
+      column: column,
+      column_mobile: column_mobile,
+      padding: padding,
+      sizes: sizes,
+      disable_lazy_loading: disable_lazy_loading,
+      motion: motion,
+      animate: 'zoom-out-small'
+    %}
+
+</div>
           {%- endif -%}
           {%- render 'variant-quickadd', product: product -%}
           <div class="outfit-desktop-content">

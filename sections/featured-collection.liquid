@@ -12,7 +12,7 @@
   assign text_alignment = section_st.text_alignment
   assign collection = section_st.collection
   assign items_per_row = section_st.items_per_row
-  assign items_to_show = section_st.items_to_show
+  assign items_to_show = section_st.feat_items_to_show
   assign show_pagination = section_st.show_pagination
   assign show_navigation = section_st.show_navigation
   assign reveal_slide = section_st.reveal_slide
@@ -243,11 +243,11 @@
           {%- liquid
             if collection.products.size > 0
               for product in collection.products limit: items_to_show
-                render 'card-product', enable_motion: true, card_product: product, section_id: section.id, class: ' swiper-slide motion-item', container: section_width, column: items_per_row, column_mobile: items_per_row_mobile, padding: column_gap_slide, indexFor: forloop.index
+                render 'card-product', enable_motion: true, card_product: product, section_id: section.id,product_background: section.settings.product_background, class: ' swiper-slide motion-item', container: section_width, column: items_per_row, column_mobile: items_per_row_mobile, padding: column_gap_slide, indexFor: forloop.index
               endfor
             else
               for i in (1..items_to_show)
-                render 'card-product', enable_motion: true, section_id: section.id, class: ' swiper-slide motion-item', indexFor: forloop.index
+                render 'card-product', enable_motion: true, section_id: section.id, product_background: section.settings.product_background, class: ' swiper-slide motion-item', indexFor: forloop.index
               endfor
             endif
           -%}
@@ -270,11 +270,11 @@
         {%- liquid
           if collection.products.size > 0
             for product in collection.products limit: items_to_show
-              render 'card-product', enable_motion: true, card_product: product, section_id: section.id, class: ' grid-card-item motion-item', container: section_width, column: items_per_row, column_mobile: items_per_row_mobile, padding: column_gap_slide, indexFor: forloop.index
+              render 'card-product', enable_motion: true, card_product: product, section_id: section.id,product_background: section.settings.product_background, class: ' grid-card-item motion-item', container: section_width, column: items_per_row, column_mobile: items_per_row_mobile, padding: column_gap_slide, indexFor: forloop.index
             endfor
           else
             for i in (1..items_to_show)
-              render 'card-product', enable_motion: true, section_id: section.id, class: ' grid-card-item motion-item', indexFor: forloop.index
+              render 'card-product', enable_motion: true, section_id: section.id, product_background: section.settings.product_background, class: ' grid-card-item motion-item', indexFor: forloop.index
             endfor
           endif
         -%}
@@ -483,8 +483,13 @@
       "label": "t:sections.collection-list.settings.header.collection"
     },
     {
+  "type": "image_picker",
+  "id": "product_background",
+  "label": "Product Background"
+},
+    {
       "type": "range",
-      "id": "items_to_show",
+      "id": "feat_items_to_show",
       "label": "t:sections.all.items_to_show.label",
       "min": 2,
       "max": 12,

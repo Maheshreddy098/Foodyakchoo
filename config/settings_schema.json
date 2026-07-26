@@ -1281,6 +1281,102 @@
         "default": false
       },
       {
+        "type": "image_picker",
+        "id": "product_background_1",
+        "label": "Product background image 1",
+        "info": "Choose one of the saved backgrounds for products."
+      },
+      {
+        "type": "image_picker",
+        "id": "product_background_2",
+        "label": "Product background image 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "product_background_3",
+        "label": "Product background image 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "product_background_4",
+        "label": "Product background image 4"
+      },
+      {
+        "type": "select",
+        "id": "product_background_active",
+        "label": "Active desktop product background",
+        "options": [
+          {
+            "value": "bg_1",
+            "label": "Background 1"
+          },
+          {
+            "value": "bg_2",
+            "label": "Background 2"
+          },
+          {
+            "value": "bg_3",
+            "label": "Background 3"
+          },
+          {
+            "value": "bg_4",
+            "label": "Background 4"
+          }
+        ],
+        "default": "bg_1",
+        "info": "Choose which saved background image is used on desktop product cards."
+      },
+      {
+        "type": "select",
+        "id": "product_background_active_mobile",
+        "label": "Active mobile product background",
+        "options": [
+          {
+            "value": "bg_1",
+            "label": "Background 1"
+          },
+          {
+            "value": "bg_2",
+            "label": "Background 2"
+          },
+          {
+            "value": "bg_3",
+            "label": "Background 3"
+          },
+          {
+            "value": "bg_4",
+            "label": "Background 4"
+          }
+        ],
+        "default": "bg_1",
+        "info": "Choose which saved background image is used on mobile product cards."
+      },
+      {
+        "type": "select",
+        "id": "product_background_style",
+        "label": "Product background display mode",
+        "options": [
+          {
+            "value": "hover",
+            "label": "Hover only"
+          },
+          {
+            "value": "always",
+            "label": "Always visible"
+          },
+          {
+            "value": "soft",
+            "label": "Soft overlay"
+          },
+          {
+            "value": "none",
+            "label": "Disabled"
+          }
+        ],
+        "default": "hover",
+        "info": "Choose how the background image appears behind product cards."
+      },
+      {
         "type": "range",
         "id": "color_limit",
         "min": 1,
