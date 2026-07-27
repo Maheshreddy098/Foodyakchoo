@@ -281,7 +281,7 @@
   left: 50%;
   bottom: -18%;
   transform: translateX(-50%);
-  width: 130%;
+  width: 140%;
   max-width: none;
   z-index: 15;
   object-fit: cover;
@@ -340,12 +340,14 @@ KEYFRAMES
 
 @keyframes snowUp {
   0% {
-    bottom: -60%;
-    opacity: 0;
+    bottom: -18%;
+transform: translateX(-50%) scale(1.1);
+    opacity: 1;
   }
 
   100% {
-    bottom: -0%;
+    bottom: 0%;
+transform: translateX(-50%) scale(1);
     opacity: 1;
   }
 }
@@ -382,7 +384,7 @@ KEYFRAMES
 }
 
 .intro-bottom.rise {
-  animation: snowUp 1.8s forwards ease-out;
+  animation: snowUp 2.2s forwards ease-out;
 }
 @media(max-width:768px){
 

@@ -15,7 +15,6 @@ console.log("home.js loaded");
     }
 
     const logo = intro.querySelector(".intro-logo");
-    console.log("Logo Found:", logo);
     const left = intro.querySelector(".intro-left");
     const right = intro.querySelector(".intro-right");
     const bottom = intro.querySelector(".intro-bottom");
@@ -39,6 +38,7 @@ console.log("home.js loaded");
       setTimeout(function () {
         if (left) left.classList.add("open-left");
         if (right) right.classList.add("open-right");
+        if (bottom) bottom.classList.add("rise");
       }, 800);
 
       // Bottom Mountain rises after split
@@ -49,12 +49,7 @@ console.log("home.js loaded");
       // Hide Intro
       setTimeout(function () {
         intro.classList.add("hide");
-      }, 4300);
-      // Remove intro
-      setTimeout(function () {
-        intro.style.display = "none";
-        initWheelCar();
-      }, 5000);
+      }, 4200);
 
       // Finish Intro + Start Wheel
       setTimeout(function () {

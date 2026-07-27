@@ -305,11 +305,25 @@
                   class="block_infor-text align-center bg-secondary flex gap-custom{% if block_st.uppercase %} uppercase{% endif %} fs-{{ block_st.highlight_text_size }} text-color bg-custom py-15 px-25 btn-rounded"
                   style="--color-text: var(--btn-primary-bg-color);"
                 >
-                  {% if block_st.highlight_text_icon != 'none' %}
-                    <span class="w-custom flex flex-auto" style="--width: 24px;">
-                      {% render 'icon_svg_list', icon: block_st.highlight_text_icon, custom_width: 24 %}
-                    </span>
-                  {% endif %}
+                {% if block_st.custom_icon != blank %}
+
+  <span class="custom-info-icon-wrapper">
+    <img
+      src="{{ block_st.custom_icon | image_url: width: 80 }}"
+      alt="{{ block_st.title }}"
+      class="custom-info-icon"
+      loading="lazy">
+  </span>
+
+{% elsif block_st.highlight_text_icon != 'none' %}
+
+  <span class="w-custom flex flex-auto" style="--width:24px;">
+    {% render 'icon_svg_list',
+      icon: block_st.highlight_text_icon,
+      custom_width:24 %}
+  </span>
+
+{% endif %}
                   <span>{{ block_st.title | escape }}</span>
                 </div>
                 <svg width="25" height="25" fill="none" class="absolute balloon-icon hidden block-1025 rtl-mirror">
@@ -671,9 +685,18 @@
             {
               "value": "shield",
               "label": "t:sections.all.icon.shield.label"
+            },
+            {
+             "value": "leaf",
+            "label": "Leaf"
             }
           ]
         },
+        {
+  "type": "image_picker",
+  "id": "custom_icon",
+  "label": "Custom Icon"
+},
         {
           "type": "checkbox",
           "id": "uppercase",
