@@ -174,26 +174,8 @@
                 {% assign bg_image_desktop = bg_image %}
                 {% assign bg_image_mobile = bg_image %}
               {% else %}
-                {% case settings.product_background_active %}
-                  {% when 'bg_1' %}
-                    {% assign bg_image_desktop = settings.product_background_1 %}
-                  {% when 'bg_2' %}
-                    {% assign bg_image_desktop = settings.product_background_2 %}
-                  {% when 'bg_3' %}
-                    {% assign bg_image_desktop = settings.product_background_3 %}
-                  {% when 'bg_4' %}
-                    {% assign bg_image_desktop = settings.product_background_4 %}
-                {% endcase %}
-                {% case settings.product_background_active_mobile | default: settings.product_background_active %}
-                  {% when 'bg_1' %}
-                    {% assign bg_image_mobile = settings.product_background_1 %}
-                  {% when 'bg_2' %}
-                    {% assign bg_image_mobile = settings.product_background_2 %}
-                  {% when 'bg_3' %}
-                    {% assign bg_image_mobile = settings.product_background_3 %}
-                  {% when 'bg_4' %}
-                    {% assign bg_image_mobile = settings.product_background_4 %}
-                {% endcase %}
+              {% assign bg_image_desktop = product_background %}
+            {% assign bg_image_mobile = product_background %}
               {% endif %}
               {% if bg_image_desktop != blank %}
                 <img

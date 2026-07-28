@@ -1,0 +1,140 @@
+{{ 'about-us.css' | asset_url | stylesheet_tag }}
+<section class="about-yakchoo" style="
+    --section-bg:{{ section.settings.section_bg }};
+    --heading-color:{{ section.settings.heading_color }};
+    --text-color:{{ section.settings.text_color }};
+    --button-bg:{{ section.settings.button_bg }};
+    --button-text:{{ section.settings.button_txt }};
+    --image-bg:{{ section.settings.image_bg }};
+  ">
+  <div class="page-width">
+
+    <div class="about-title">
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="about-wrapper">
+
+      <div class="about-image">
+        {% if section.settings.image != blank %}
+          <div class="image-follow">
+            <div class="image-inner">
+              <img
+                src="{{ section.settings.image | image_url: width: 1200 }}"
+                alt="{{ section.settings.heading }}"
+                loading="lazy">
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="about-content">
+
+        <p class="small-heading">
+          {{ section.settings.small_heading }}
+        </p>
+
+        <h3>
+          {{ section.settings.title }}
+        </h3>
+
+        <div class="about-text">
+          {{ section.settings.text }}
+        </div>
+
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}" class="about-btn">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+{{ 'about-us.js' | asset_url | script_tag }}
+{% schema %}
+  {
+    "name": "About-us",
+    "settings": [
+
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "About Us"
+      },
+      {
+        "type": "color",
+        "id": "section_bg",
+        "label": "Section Background",
+        "default": "#F6F3EE"
+      },
+
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading Color",
+        "default": "#193D71"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#666666"
+      }, {
+        "type": "color",
+        "id": "button_bg",
+        "label": "Button Background",
+        "default": "#193D71"
+      }, {
+        "type": "color",
+        "id": "button_txt",
+        "label": "Button Text Color",
+        "default": "#FFFFFF"
+      }, {
+        "type": "color",
+        "id": "image_bg",
+        "label": "Image Background",
+        "default": "#FFFFFF"
+      }, {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }, 
+       {
+        "type": "text",
+        "id": "small_heading",
+        "label": "Small Heading",
+        "default": "Born in the Himalayas"
+      }, {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Healthy Treats. Happy Dogs."
+      }, {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Crafted from authentic Himalayan Yak Milk, our chews are packed with natural goodness. Every product is made to keep your dog healthy, happy and entertained.</p>"
+      }, {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Shop Now"
+      }, {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      }
+
+    ],
+  "presets": [
+  {
+    "name": "About Us",
+}
+  ]
+  }
+{% endschema %}

@@ -376,6 +376,8 @@
                         enable_motion: true,
                         card_product: product,
                         section_id: block.id,
+                        product_background: block.settings.product_background,
+                        section_id:block.id,
                         class: ' swiper-slide motion-item',
                         container: section_width,
                         column: items_per_row,
@@ -780,6 +782,11 @@
           "id": "collection",
           "label": "t:sections.product-tabs.blocks.settings.collection.label"
         },
+        {
+  "type": "image_picker",
+  "id": "product_background",
+  "label": "Product Background"
+},
         {
           "type": "text",
           "id": "collection_title",

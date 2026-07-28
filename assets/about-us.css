@@ -1,0 +1,148 @@
+/* ===========================
+   ABOUT YAKCHOO
+=========================== */
+
+.about-yakchoo{
+    position:relative;
+    background:var(--section-bg);
+    padding:120px 0 180px;
+    overflow:visible;
+}
+
+.about-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.about-title h2{
+    font-size:70px;
+    line-height:1;
+    font-weight:700;
+    color:var(--heading-color);
+    margin:0;
+}
+
+.about-wrapper{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    align-items:center;
+    gap:80px;
+}
+
+.about-image{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.image-follow{
+    width:100%;
+    max-width:600px;
+    overflow:hidden;
+    border-radius:35px;
+    position:relative;
+}
+
+.image-follow img{
+    width:100%;
+    display:block;
+    transform:scale(1.08);
+    transition:transform .45s ease;
+    will-change:transform;
+}
+
+.small-heading{
+    color:var(--heading-color);
+    font-size:15px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+    font-weight:600;
+}
+
+.about-content h3{
+    font-size:54px;
+    line-height:1.1;
+    color:var(--heading-color);
+    margin-bottom:25px;
+    max-width:550px;
+}
+
+.about-text{
+    font-size:18px;
+    line-height:1.9;
+    color:var(--text-color);
+    max-width:520px;
+}
+
+.about-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:35px;
+    padding:18px 42px;
+    background:var(--button-bg);
+    color:var(--button-text);
+    border-radius:100px;
+    text-decoration:none;
+    transition:.35s;
+}
+
+.about-btn:hover{
+    background:#0d2f5f;
+    transform:translateY(-4px);
+}
+
+@media(max-width:991px){
+
+.about-yakchoo{
+padding:70px 20px;
+}
+
+.about-wrapper{
+grid-template-columns:1fr;
+gap:45px;
+}
+
+.about-title h2{
+font-size:44px;
+}
+
+.about-content h3{
+font-size:36px;
+}
+
+}
+.image-follow{
+position:relative;
+overflow:hidden;
+border-radius:35px;
+background:var(--image-bg);
+padding:20px;
+}
+
+.image-inner{
+    width:100%;
+    transition:transform .35s ease;
+    transform-style:preserve-3d;
+}
+
+.image-inner img{
+    width:100%;
+    height:auto;
+    display:block;
+    border-radius:35px;
+    object-fit:cover;
+}
+.about-rope-wrapper{
+    width:100%;
+    margin-top:40px;
+}
+
+.rope-main{
+    width:100%;
+    height:6px;
+    background:#8b5a2b;
+    border-radius:20px;
+}
