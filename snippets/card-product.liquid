@@ -164,33 +164,26 @@
           >
             {%- if p_media -%}
               <div
-                class="image__media product__media animation-swatches{{ image_rounded }}{% if type == 'bought_together' %} h-full{% endif %}"
-                style="--aspect-ratio: {{ aspect_ratio | default: ratio }};"
-              >
-              {% assign bg_image = product_background | default: section.settings.product_background %}
-              {% assign bg_image_mobile = blank %}
-              {% assign bg_image_desktop = blank %}
-              {% if bg_image != blank %}
-                {% assign bg_image_desktop = bg_image %}
-                {% assign bg_image_mobile = bg_image %}
-              {% else %}
-              {% assign bg_image_desktop = product_background %}
-            {% assign bg_image_mobile = product_background %}
-              {% endif %}
-              {% if bg_image_desktop != blank %}
-                <img
-                  src="{{ bg_image_desktop | image_url: width: 1200 }}"
-                  alt=""
-                  class="product-bg-image product-bg-desktop hover-bg"
-                />
-              {% endif %}
-              {% if bg_image_mobile != blank %}
-                <img
-                  src="{{ bg_image_mobile | image_url: width: 1200 }}"
-                  alt=""
-                  class="product-bg-image product-bg-mobile hover-bg"
-                />
-              {% endif %}
+  class="image__media product__media animation-swatches{{ image_rounded }}{% if type == 'bought_together' %} h-full{% endif %}"
+  style="--aspect-ratio: {{ aspect_ratio | default: ratio }};"
+>
+<!-- Hover Background -->
+   <div class="product-hover-bg">
+    <svg viewBox="0 0 200 200" preserveAspectRatio="none">
+      <path
+        fill="#B3E6FF"
+        d="M45.6,-69.2C57.8,-61.1,65.5,-48.3,71.9,-34.5C78.3,-20.6,83.3,-5.8,81.8,8.3C80.4,22.4,72.5,35.8,63.2,47.1C53.8,58.4,43.1,67.6,30.8,72.9C18.5,78.2,4.6,79.7,-9.4,78.8C-23.5,78,-37.6,74.8,-49.8,67.5C-62,60.2,-72.2,48.9,-77.1,35.4C-82.1,21.8,-81.8,6,-78.1,-8.8C-74.4,-23.6,-67.2,-37.5,-57.2,-47.5C-47.2,-57.4,-34.3,-63.4,-21.2,-70.1C-8,-76.8,5.4,-84.2,18.7,-82.3C32.1,-80.4,45.6,-69.2,45.6,-69.2Z"
+        transform="translate(100 100)">
+      </path>
+    </svg>
+  </div>
+{% if product_background != blank %}
+  <img
+    src="{{ product_background | image_url: width: 1200 }}"
+    alt=""
+    class="product-bg-image hover-bg"
+  >
+{% endif %}
                 {%- assign alt_features = p_media.alt | default: card_product.title | escape -%}
                 {% render 'responsive-image',
                   type: 'product',

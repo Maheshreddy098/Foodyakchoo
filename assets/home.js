@@ -1,4 +1,4 @@
-console.log("home.js loaded");
+console.log("GSAP:", gsap);
 
 (function () {
   /* ==========================
@@ -19,52 +19,293 @@ console.log("home.js loaded");
     const right = intro.querySelector(".intro-right");
     const bottom = intro.querySelector(".intro-bottom");
 
-    function playIntro() {
-      intro.style.display = "flex";
-      intro.classList.remove("hide");
-      if (logo) logo.classList.remove("zoom");
-      if (left) left.classList.remove("open-left");
-      if (right) right.classList.remove("open-right");
-      if (bottom) bottom.classList.remove("rise");
+   
+function playIntro() {
+  const hero = document.querySelector(".scroll-rotate-section");
+  const sky = intro.querySelector(".intro-sky");
 
-      void intro.offsetWidth;
+  intro.style.display = "flex";
 
-      // Logo Zoom
-      setTimeout(function () {
-        if (logo) logo.classList.add("zoom");
-      }, 300);
+  gsap.killTweensOf([
+    intro,
+    sky,
+    logo,
+    left,
+    right,
+    bottom,
+    hero
+  ]);
 
-      // Mountains Open after logo centers
-      setTimeout(function () {
-        if (left) left.classList.add("open-left");
-        if (right) right.classList.add("open-right");
-        if (bottom) bottom.classList.add("rise");
-      }, 800);
+  /*
+   * Reset intro container.
+   */
+  gsap.set(intro, {
+    autoAlpha: 1,
+    backgroundColor: "#d8eef7"
+  });
 
-      // Bottom Mountain rises after split
-      setTimeout(function () {
-        if (bottom) bottom.classList.add("rise");
-      }, 100);
+  /*
+   * Reset sky.
+   */
+  if (sky) {
+    gsap.set(sky, {
+      yPercent: 0,
+      autoAlpha: 1
+    });
+  }
 
-      // Hide Intro
-      setTimeout(function () {
-        intro.classList.add("hide");
-      }, 4200);
+  /*
+   * Reset logo.
+   */
+  if (logo) {
+    gsap.set(logo, {
+      scale: 0,
+      opacity: 0,
+      x: 0,
+      y: 0
+    });
+  }
 
-      // Finish Intro + Start Wheel
-      setTimeout(function () {
-        intro.style.display = "none";
+  /*
+   * Reset left mountain.
+   */
+  if (left) {
+    gsap.set(left, {
+      x: 0,
+      xPercent: 0,
+      y: 0
+    });
+  }
 
-        const hero = document.querySelector(".scroll-rotate-section");
-        if (hero) {
-          hero.style.display = "block";
-          hero.style.visibility = "visible";
-          hero.style.opacity = "1";
-        }
+  /*
+   * Reset right mountain.
+   */
+  if (right) {
+    gsap.set(right, {
+      x: 0,
+      xPercent: 0,
+      y: 0
+    });
+  }
 
-        initWheelCar();
-      }, 4700);
+  /*
+   * Reset bottom foreground snow.
+   *
+   * xPercent keeps it centered because CSS uses left: 50%.
+   */
+  if (bottom) {
+    gsap.set(bottom, {
+      x:0,
+      xPercent: -50,
+      y: 0,
+      yPercent: 0,
+      scale: 1,
+      autoAlpha: 1,
+      transformOrigin: "center bottom"
+    });
+  }
+
+  /*
+   * Home page begins below the viewport.
+   */
+  if (hero) {
+    gsap.set(hero, {
+      display: "block",
+      visibility: "visible",
+      autoAlpha: 1,
+      yPercent: 100
+    });
+  }
+
+  const tl = gsap.timeline({
+    onComplete: function () {
+      /*
+       * Remove only the temporary transform from the home page.
+       */
+      if (hero) {
+        gsap.set(hero, {
+          clearProps: "transform"
+        });
+      }
+
+      gsap.set(intro, {
+        autoAlpha: 0
+      });
+
+      intro.style.display = "none";
+
+      initWheelCar();
     }
+  });
+
+  /*
+   * STEP 1:
+   * Logo appears.
+   */
+  if (logo) {
+    tl.to(logo, {
+      scale: 1,
+      opacity: 1,
+      duration: 3,
+      ease: "back.out(1.7)"
+    });
+  }
+
+  /*
+   * STEP 2:
+   * Mountains move first.
+   */
+  tl.addLabel("mountains-open");
+
+  if (left) {
+    tl.to(
+      left,
+      {
+        xPercent: -110,
+        duration: 3,
+        ease: "sine.inOut"
+      },
+      "mountains-open"
+    );
+  }
+
+  if (right) {
+    tl.to(
+      right,
+      {
+        xPercent: 110,
+        duration: 3,
+        ease: "sine.inOut"
+      },
+      "mountains-open"
+    );
+  }
+
+  /*
+   * This label begins after the mountains finish.
+   */
+  tl.addLabel("prepare-reveal", "mountains-open+=1");
+
+  /*
+   * STEP 3:
+   * Logo zooms out.
+   */
+  if (logo) {
+    tl.to(
+      logo,
+      {
+        scale: 0.72,
+        y: -30,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.inOut"
+      },
+      "prepare-reveal"
+    );
+  }
+
+  /*
+   * STEP 4:
+   * Bottom snow zooms out slightly.
+   */
+  if (bottom) {
+    tl.to(
+      bottom,
+      {
+        scale: 0.94,
+        duration: 0.8,
+        ease: "power2.inOut"
+      },
+      "prepare-reveal"
+    );
+  }
+
+  /*
+   * Begin snow and home-page reveal after zoom-out.
+   */
+  tl.addLabel("snow-reveal", "prepare-reveal+=0.5");
+
+  /*
+   * Make the fixed intro background transparent.
+   * Otherwise it would cover the rising home page.
+   */
+  tl.set(
+    intro,
+    {
+      backgroundColor: "transparent"
+    },
+    "snow-reveal"
+  );
+
+  /*
+   * Move the old sky out through the top.
+   */
+  if (sky) {
+    tl.to(
+      sky,
+      {
+        yPercent: -100,
+        duration: 2.8,
+        ease: "power3.inOut"
+      },
+      "snow-reveal"
+    );
+  }
+
+  /*
+   * STEP 5:
+   * Home page rises from below.
+   */
+  if (hero) {
+    tl.to(
+      hero,
+      {
+        yPercent: 0,
+        duration: 2.8,
+        ease: "power3.inOut"
+      },
+      "snow-reveal"
+    );
+  }
+
+  /*
+   * STEP 6:
+   * Bottom snow rises at the same time as the home page.
+   */
+  if (bottom) {
+    tl.to(
+      bottom,
+      {
+        y: function () {
+          return -(
+            window.innerHeight +
+            bottom.getBoundingClientRect().height +
+            20
+          );
+        },
+        duration: 2.8,
+        ease: "power3.inOut"
+      },
+      "snow-reveal"
+    );
+  }
+
+  /*
+   * Hide the intro only when the reveal is complete.
+   */
+  tl.to(
+    intro,
+    {
+      autoAlpha: 0,
+      duration: 0.2,
+      ease: "none"
+    },
+    "snow-reveal+=2.75"
+  );
+}
+      
+   
+     
 
     playIntro();
 
@@ -86,9 +327,7 @@ console.log("home.js loaded");
         behavior: "smooth",
       });
 
-      setTimeout(function () {
-        playIntro();
-      }, 500);
+     gsap.delayedCall(0.5, playIntro);
     });
   }
 
@@ -280,7 +519,7 @@ console.log("home.js loaded");
     initIntro();
   }
 
-  document.addEventListener("shopify:section:load", function () {
-    initWheelCar();
+  document.addEventListener("shopify:section:load", function (event) {
+    initWheelCar(event.target);
   });
 })();
