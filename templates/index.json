@@ -2093,25 +2093,6 @@
         "padding_bottom": 100,
         "show_divider": false
       }
-    },
-    "about_us_4rTryL": {
-      "type": "about-us",
-      "name": "About Us",
-      "settings": {
-        "heading": "About Us",
-        "section_bg": "#F6F3EE",
-        "heading_color": "#193D71",
-        "text_color": "#666666",
-        "button_bg": "#193D71",
-        "button_txt": "#FFFFFF",
-        "image_bg": "#FFFFFF",
-        "image": "shopify://shop_images/Designer_3.png",
-        "small_heading": "Born in the Himalayas",
-        "title": "Healthy Treats. Happy Dogs.",
-        "text": "<p>Crafted from authentic Himalayan Yak Milk, our chews are packed with natural goodness. Every product is made to keep your dog healthy, happy and entertained.</p>",
-        "button_text": "Shop Now",
-        "button_link": ""
-      }
     }
   },
   "order": [
@@ -2133,7 +2114,6 @@
     "image_with_text_BHk7ME",
     "faqs_8y7kPB",
     "scrolling_image_XCJXfG",
-    "icon_box_bxhaa4",
-    "about_us_4rTryL"
+    "icon_box_bxhaa4"
   ]
 }
