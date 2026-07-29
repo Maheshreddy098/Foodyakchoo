@@ -7,9 +7,8 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
-    
     "home-page": {
       "type": "home-page",
       "blocks": {
@@ -61,17 +60,17 @@
         "text_VYctW8",
         "text_cMNqhQ"
       ],
-      
       "settings": {
         "button_label": "SHOP ALL",
         "button_link": "shopify://collections/all",
-        "background_image": "shopify://shop_images/benifit-sec-bg.webp",
+        "background_image": "shopify://shop_images/Copilot_20260722_142041.png",
         "background_color": "#e2f4fc",
         "content_alignment": "left",
         "heading_color": "#193d71",
         "heading_size": 26,
         "button_bg_color": "#193d71",
         "button_text_color": "#fee000",
+        "fit_to_screen": true,
         "product_scale": 110,
         "wheel_loop": true,
         "wheel_threshold": 160,
@@ -586,6 +585,7 @@
           "type": "tab",
           "settings": {
             "collection": "soft-treats",
+            "product_background": "shopify://shop_images/about-making-bg.webp",
             "collection_title": "Best Seller",
             "collection_description": ""
           }
@@ -2093,6 +2093,25 @@
         "padding_bottom": 100,
         "show_divider": false
       }
+    },
+    "about_us_4rTryL": {
+      "type": "about-us",
+      "name": "About Us",
+      "settings": {
+        "heading": "About Us",
+        "section_bg": "#F6F3EE",
+        "heading_color": "#193D71",
+        "text_color": "#666666",
+        "button_bg": "#193D71",
+        "button_txt": "#FFFFFF",
+        "image_bg": "#FFFFFF",
+        "image": "shopify://shop_images/Designer_3.png",
+        "small_heading": "Born in the Himalayas",
+        "title": "Healthy Treats. Happy Dogs.",
+        "text": "<p>Crafted from authentic Himalayan Yak Milk, our chews are packed with natural goodness. Every product is made to keep your dog healthy, happy and entertained.</p>",
+        "button_text": "Shop Now",
+        "button_link": ""
+      }
     }
   },
   "order": [
@@ -2114,6 +2133,7 @@
     "image_with_text_BHk7ME",
     "faqs_8y7kPB",
     "scrolling_image_XCJXfG",
-    "icon_box_bxhaa4"
+    "icon_box_bxhaa4",
+    "about_us_4rTryL"
   ]
 }
