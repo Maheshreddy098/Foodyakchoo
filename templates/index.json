@@ -7,9 +7,8 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
-    
     "home-page": {
       "type": "home-page",
       "blocks": {
@@ -61,7 +60,6 @@
         "text_VYctW8",
         "text_cMNqhQ"
       ],
-      
       "settings": {
         "button_label": "SHOP ALL",
         "button_link": "shopify://collections/all",
@@ -72,10 +70,16 @@
         "heading_size": 26,
         "button_bg_color": "#193d71",
         "button_text_color": "#fee000",
+        "fit_to_screen": true,
         "product_scale": 110,
         "wheel_loop": true,
         "wheel_threshold": 160,
-        "wheel_lock_time": 650
+        "wheel_lock_time": 650,
+        "intro_sky": "shopify://shop_images/about-making-bg.webp",
+        "intro_logo": "shopify://shop_images/logo-mob.webp",
+        "left_mountain": "shopify://shop_images/parallax-left-mountain.webp",
+        "right_mountain": "shopify://shop_images/parallax-right-mountain.webp",
+        "bottom_mountain": "shopify://shop_images/parallax-bottom-img.webp"
       }
     },
     "flexible_section_qLGCpK": {
