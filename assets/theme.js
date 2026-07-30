@@ -4238,3 +4238,39 @@ class LiveView extends HTMLElement {
   }
 }
 customElements.define("live-view", LiveView);
+
+
+// 3D Animation
+window.addEventListener("load", () => {
+
+  document.querySelectorAll(".image-follow").forEach(card => {
+
+    const motion = card.querySelector("motion-effect");
+
+    if (!motion) return;
+
+    card.addEventListener("mousemove", (e) => {
+
+      const rect = card.getBoundingClientRect();
+
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const rotateY = (x - rect.width / 2) / 25;
+      const rotateX = -(y - rect.height / 2) / 25;
+
+      motion.style.transform =
+        `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+    });
+
+    card.addEventListener("mouseleave", () => {
+
+      motion.style.transform =
+        "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+
+    });
+
+  });
+
+});

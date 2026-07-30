@@ -33,7 +33,7 @@
       {%- endif -%}
     >
       <div
-        class="banner__media absolute{% if section_width != "full-width" %} rounded{% endif %}{% if image == blank %} placeholder inset-0{% endif %}{% if image_height != 'adapt' %} inset-0{% endif %}{% if show_text_bellow_mobile %} h-{{ image_height }}{% endif %}"
+        class="banner__media image-follow absolute{% if section_width != "full-width" %} rounded{% endif %}{% if image == blank %} placeholder inset-0{% endif %}{% if image_height != 'adapt' %} inset-0{% endif %}{% if show_text_bellow_mobile %} h-{{ image_height }}{% endif %}"
         {%- if image_height == 'adapt' or image_height == 'full_screen' or image_height == 'base_on_content' -%}
           style="{{ style_ratio | strip | strip_newlines }}"
         {% else %}
