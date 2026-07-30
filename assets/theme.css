@@ -4520,4 +4520,13 @@ shopable-image {
     width:180px;
     transform:none;
 }
+.image-follow{
+    perspective:1000px;
+}
 
+.image-follow motion-effect{
+    display:block;
+    transition:transform .2s ease;
+    transform-style:preserve-3d;
+    will-change:transform;
+}

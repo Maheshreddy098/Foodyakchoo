@@ -7,8 +7,9 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
+    
     "home-page": {
       "type": "home-page",
       "blocks": {
@@ -60,17 +61,17 @@
         "text_VYctW8",
         "text_cMNqhQ"
       ],
+      
       "settings": {
         "button_label": "SHOP ALL",
         "button_link": "shopify://collections/all",
-        "background_image": "shopify://shop_images/Copilot_20260722_142041.png",
+        "background_image": "shopify://shop_images/benifit-sec-bg.webp",
         "background_color": "#e2f4fc",
         "content_alignment": "left",
         "heading_color": "#193d71",
         "heading_size": 26,
         "button_bg_color": "#193d71",
         "button_text_color": "#fee000",
-        "fit_to_screen": true,
         "product_scale": 110,
         "wheel_loop": true,
         "wheel_threshold": 160,
@@ -585,7 +586,6 @@
           "type": "tab",
           "settings": {
             "collection": "soft-treats",
-            "product_background": "shopify://shop_images/about-making-bg.webp",
             "collection_title": "Best Seller",
             "collection_description": ""
           }

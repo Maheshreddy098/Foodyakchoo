@@ -123,6 +123,8 @@
   transition:
     transform 1s ease-out,
     opacity 0.3s ease;
+    opacity:0;
+    visibility:hidden;
 }
 
 .banner-item img {
@@ -317,4 +319,15 @@ width:61vw;
 width:140%;
 bottom:0;
 }
+}
+.intro-logo,
+.intro-left,
+.intro-right,
+.intro-bottom,
+.intro-sky,
+.scroll-rotate-section,
+.banner-item,
+[data-behavior="banner-circle"]{
+    will-change: transform;
+    backface-visibility: hidden;
 }
