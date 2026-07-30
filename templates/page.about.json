@@ -51,7 +51,7 @@
         "heading_diAYHj": {
           "type": "heading",
           "settings": {
-            "heading": "Purity's Story",
+            "heading": "",
             "type_preset": "h1",
             "padding_top": 25,
             "padding_bottom": 15
@@ -61,7 +61,7 @@
         "description_NLNhKz": {
           "type": "description",
           "settings": {
-            "description": "<p>Skincare that begins with intention and ends with trust—crafted gently, honestly, and with purpose in every drop.</p>",
+            "description": "",
             "type_preset": "",
             "padding_top": 0,
             "padding_bottom": 0
