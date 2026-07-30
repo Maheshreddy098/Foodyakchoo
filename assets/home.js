@@ -1,5 +1,3 @@
-console.log("GSAP:", gsap);
-
 (function () {
   /* ==========================
      YAKCHOO INTRO ANIMATION
@@ -7,7 +5,6 @@ console.log("GSAP:", gsap);
 
   function initIntro() {
     const intro = document.getElementById("yakchoo-intro");
-    console.log("Intro Found:", intro);
 
     if (!intro) {
       initWheelCar();
@@ -59,10 +56,10 @@ function playIntro() {
    */
   if (logo) {
     gsap.set(logo, {
-      scale: 0,
+      scale: 0.3,
       opacity: 0,
       x: 0,
-      y: 0
+      y: -250
     });
   }
 
@@ -113,7 +110,7 @@ function playIntro() {
       display: "block",
       visibility: "visible",
       autoAlpha: 1,
-      yPercent: 100
+      yPercent: 102
     });
   }
 
@@ -144,10 +141,12 @@ function playIntro() {
    */
   if (logo) {
     tl.to(logo, {
+      y:0,
       scale: 1,
       opacity: 1,
-      duration: 3,
-      ease: "back.out(1.7)"
+      duration: 2.5,
+      ease: "back.out(1.7)",
+      force3D: true
     });
   }
 
@@ -163,7 +162,8 @@ function playIntro() {
       {
         xPercent: -110,
         duration: 3,
-        ease: "sine.inOut"
+        ease: "sine.inOut",
+        force3D: true
       },
       "mountains-open"
     );
@@ -175,7 +175,8 @@ function playIntro() {
       {
         xPercent: 110,
         duration: 3,
-        ease: "sine.inOut"
+        ease: "sine.inOut",
+        force3D: true
       },
       "mountains-open"
     );
@@ -184,7 +185,7 @@ function playIntro() {
   /*
    * This label begins after the mountains finish.
    */
-  tl.addLabel("prepare-reveal", "mountains-open+=1");
+  tl.addLabel("prepare-reveal", "mountains-open");
 
   /*
    * STEP 3:
@@ -194,11 +195,11 @@ function playIntro() {
     tl.to(
       logo,
       {
-        scale: 0.72,
-        y: -30,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.inOut"
+        scale: 0.3,
+        y: -300,
+        duration: 2.8,
+        ease: "power2.inOut",
+        force3D: true
       },
       "prepare-reveal"
     );
@@ -214,7 +215,8 @@ function playIntro() {
       {
         scale: 0.94,
         duration: 0.8,
-        ease: "power2.inOut"
+        ease: "power2.inOut",
+        force3D: true
       },
       "prepare-reveal"
     );
@@ -223,7 +225,7 @@ function playIntro() {
   /*
    * Begin snow and home-page reveal after zoom-out.
    */
-  tl.addLabel("snow-reveal", "prepare-reveal+=0.5");
+  tl.addLabel("snow-reveal", "prepare-reveal+=0.4");
 
   /*
    * Make the fixed intro background transparent.
@@ -244,9 +246,10 @@ function playIntro() {
     tl.to(
       sky,
       {
-        yPercent: -100,
-        duration: 2.8,
-        ease: "power3.inOut"
+        yPercent: -105,
+        duration: 3,
+        ease: "power3.inOut",
+        force3D: true
       },
       "snow-reveal"
     );
@@ -261,8 +264,10 @@ function playIntro() {
       hero,
       {
         yPercent: 0,
-        duration: 2.8,
-        ease: "power3.inOut"
+        duration: 3,
+        ease: "power3.inOut",
+        force3D: true
+
       },
       "snow-reveal"
     );
@@ -273,22 +278,17 @@ function playIntro() {
    * Bottom snow rises at the same time as the home page.
    */
   if (bottom) {
-    tl.to(
-      bottom,
-      {
-        y: function () {
-          return -(
-            window.innerHeight +
-            bottom.getBoundingClientRect().height +
-            20
-          );
-        },
-        duration: 2.8,
-        ease: "power3.inOut"
-      },
-      "snow-reveal"
-    );
-  }
+  tl.to(
+    bottom,
+    {
+      yPercent: -246,
+      duration: 3,
+      ease: "power3.inOut",
+      force3D: true
+    },
+    "snow-reveal"
+  );
+}
 
   /*
    * Hide the intro only when the reveal is complete.
@@ -297,10 +297,10 @@ function playIntro() {
     intro,
     {
       autoAlpha: 0,
-      duration: 0.2,
+      duration: 0.4,
       ease: "none"
     },
-    "snow-reveal+=2.75"
+    "snow-reveal+=2.4"
   );
 }
       
@@ -395,7 +395,7 @@ function playIntro() {
 
       items.forEach((item, i) => {
         item.style.opacity = i === current ? "1" : "0";
-
+        item.style.visibility ="visible",
         item.style.transform = `translate(-50%, -50%)
         rotate(${i * angleGap}deg)
         translateY(${radius})
@@ -405,6 +405,7 @@ function playIntro() {
       });
 
       updateTextSlides();
+      circle.style.visibility = "visible";
     }
 
     function updatePageLock() {
@@ -442,7 +443,7 @@ function playIntro() {
           lastSlideScroll = 0;
         }
       }
-
+      
       applyRotation();
 
       updatePageLock();
@@ -471,7 +472,7 @@ function playIntro() {
     }
 
     updatePageLock();
-
+    circle.style.visibility = "hidden";
     applyRotation();
 
     scrollArea.addEventListener(
