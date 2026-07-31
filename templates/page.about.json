@@ -455,7 +455,9 @@
         },
         "group_image_card_mMKMDe": {
           "type": "_group-image-card",
-          "settings": {},
+          "settings": {
+            "image": "shopify://shop_images/benifit-right-img.webp"
+          },
           "blocks": {
             "description_nY3Dhc": {
               "type": "description",
@@ -471,7 +473,7 @@
             "heading_b9FwMU": {
               "type": "heading",
               "settings": {
-                "heading": "A Studio of Our Own",
+                "heading": "Yakchoo Bars",
                 "type_preset": "h6",
                 "padding_top": 0,
                 "padding_bottom": 8
@@ -723,7 +725,7 @@
         "show_view_all_button": false,
         "view_all_button_label": "View all product",
         "btn_type": "link",
-        "collection": "",
+        "collection": "6-products",
         "feat_items_to_show": 8,
         "items_per_row": 4,
         "column_gap": "medium",
