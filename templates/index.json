@@ -895,14 +895,14 @@
         "subheading_paUKVG": {
           "type": "subheading",
           "settings": {
-            "subheading": "Glow Starts Here",
+            "subheading": "",
             "spacing_bottom": 8
           }
         },
         "heading_dW4HXK": {
           "type": "heading",
           "settings": {
-            "heading": "Find Your Solutions",
+            "heading": "",
             "heading_size": "h2",
             "spacing_bottom": 25
           }
@@ -910,7 +910,7 @@
         "description_p4aPGB": {
           "type": "description",
           "settings": {
-            "description": "I have [title] skin <br> and my top skin concern is [collection]",
+            "description": "",
             "description_size": "22",
             "spacing_bottom": 43
           }
@@ -918,9 +918,9 @@
         "button_46pjh7": {
           "type": "button",
           "settings": {
-            "first_button_label": "See My Solutions",
+            "first_button_label": "",
             "first_button_type": "primary",
-            "second_button_label": "What's my skin type?",
+            "second_button_label": "",
             "second_button_link": "",
             "second_button_type": "link",
             "spacing_bottom": 0
@@ -978,6 +978,7 @@
         "section_width": "full_width",
         "color_scheme": "scheme-4a8d23be-2966-47be-ae10-8cbb3c1181cf",
         "show_collection_image": true,
+        "image": "shopify://shop_images/Copilot_20260709_133837.png",
         "overlay_opacity": 0,
         "image_height": "medium",
         "desktop_content_position": "middle-left",
