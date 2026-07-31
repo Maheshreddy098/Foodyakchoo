@@ -590,6 +590,7 @@
           "type": "tab",
           "settings": {
             "collection": "soft-treats",
+            "product_background": "shopify://shop_images/Designer_6.png",
             "collection_title": "Best Seller",
             "collection_description": ""
           }
@@ -597,7 +598,8 @@
         "tab_3yk9Qw": {
           "type": "tab",
           "settings": {
-            "collection": "",
+            "collection": "soft-treats",
+            "product_background": "shopify://shop_images/about-making-bg.webp",
             "collection_title": "What's Hot",
             "collection_description": ""
           }
@@ -605,7 +607,8 @@
         "tab_FQVJic": {
           "type": "tab",
           "settings": {
-            "collection": "",
+            "collection": "soft-treats",
+            "product_background": "shopify://shop_images/Designer_5.png",
             "collection_title": "Value Sets",
             "collection_description": ""
           }
@@ -1371,6 +1374,7 @@
         "description": "<p>Powered by Anti–Aging Serum for visibly smoother, brighter skin. ☘️</p>",
         "heading_size": "medium",
         "text_alignment": "center",
+        "image": "shopify://shop_images/product-img1.webp",
         "image_ratio": "adapt",
         "button_label": "View Product",
         "button_link": "",
@@ -2097,6 +2101,69 @@
         "padding_bottom": 100,
         "show_divider": false
       }
+    },
+    "certification_tjMgUt": {
+      "type": "certification",
+      "blocks": {
+        "certificate_XqpDRd": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item3-mob.webp"
+          }
+        },
+        "certificate_HiqUxt": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item2-mob.webp"
+          }
+        },
+        "certificate_BftXPa": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item7-mob.webp"
+          }
+        },
+        "certificate_eFxn9D": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item1.webp"
+          }
+        },
+        "certificate_RN8dnX": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item5.webp"
+          }
+        },
+        "certificate_dLByjD": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item6.webp"
+          }
+        },
+        "certificate_Dwrej7": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item4.webp"
+          }
+        }
+      },
+      "block_order": [
+        "certificate_XqpDRd",
+        "certificate_HiqUxt",
+        "certificate_BftXPa",
+        "certificate_eFxn9D",
+        "certificate_RN8dnX",
+        "certificate_dLByjD",
+        "certificate_Dwrej7"
+      ],
+      "name": "Certification",
+      "settings": {
+        "heading": "Certifications",
+        "heading_alignment": "center",
+        "heading_size": 42,
+        "subheading": ""
+      }
     }
   },
   "order": [
@@ -2118,6 +2185,7 @@
     "image_with_text_BHk7ME",
     "faqs_8y7kPB",
     "scrolling_image_XCJXfG",
-    "icon_box_bxhaa4"
+    "icon_box_bxhaa4",
+    "certification_tjMgUt"
   ]
 }
