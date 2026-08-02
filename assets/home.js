@@ -20,6 +20,9 @@
 function playIntro() {
   const hero = document.querySelector(".scroll-rotate-section");
   const sky = intro.querySelector(".intro-sky");
+  if (bottom) {
+    bottom.getBoundingClientRect();
+}
 
   intro.style.display = "flex";
 
@@ -144,7 +147,7 @@ function playIntro() {
       y:0,
       scale: 1,
       opacity: 1,
-      duration: 2.5,
+      duration: 3.5,
       ease: "back.out(1.7)",
       force3D: true
     });
@@ -281,7 +284,7 @@ function playIntro() {
   tl.to(
     bottom,
     {
-      yPercent: -246,
+      y: -window.innerHeight,
       duration: 3,
       ease: "power3.inOut",
       force3D: true
@@ -307,7 +310,11 @@ function playIntro() {
    
      
 
+   if (bottom && !bottom.complete) {
+    bottom.onload = playIntro;
+} else {
     playIntro();
+}
 
     // Replay intro on logo click
 

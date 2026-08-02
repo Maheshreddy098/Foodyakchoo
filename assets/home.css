@@ -293,7 +293,6 @@ transform: translateX(-50%) scale(1);
   z-index: 15;
   object-fit: contain;
   object-position: center bottom;
-  will-change:tranform;
   pointer-events: none;
   will-change: transform;
 }

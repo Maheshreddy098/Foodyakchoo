@@ -375,10 +375,8 @@
                       {% render 'card-product',
                         enable_motion: true,
                         card_product: product,
-                        section_id: block.id,
                         product_background: block.settings.product_background,
-                        section_id:block.id,
-                        class: ' swiper-slide motion-item',
+                        flower_image: block.settings.flower_image,
                         container: section_width,
                         column: items_per_row,
                         column_mobile: items_per_row_mobile,
@@ -787,7 +785,7 @@
   "id": "product_background",
   "label": "Product Background"
 },
-        {
+    {
           "type": "text",
           "id": "collection_title",
           "label": "t:sections.collection-list.blocks.featured_collection.settings.title.label",

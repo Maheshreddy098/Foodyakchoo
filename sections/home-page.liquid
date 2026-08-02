@@ -44,6 +44,9 @@
         src="{{ section_st.bottom_mountain | image_url: width: 2000 }}"
         width="{{ section_st.bottom_mountain.width }}"
         height="{{ section_st.bottom_mountain.height }}"
+        loading="eager"
+        fetchpriority="high"
+        decoding="sync"
         alt="">
     {% endif %}
 
