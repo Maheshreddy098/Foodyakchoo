@@ -658,6 +658,7 @@
               "type": "_collection-item",
               "settings": {
                 "collection": "",
+                "collection_image": "shopify://shop_images/Dogsee-bars-peanut-M.jpg",
                 "collection_title": "Skin Care"
               },
               "blocks": {}
@@ -666,6 +667,7 @@
               "type": "_collection-item",
               "settings": {
                 "collection": "",
+                "collection_image": "shopify://shop_images/image_-_2026-04-24T152033.169_51102abd-cb22-483b-8486-593d9515b76a.webp",
                 "collection_title": "Make Up"
               },
               "blocks": {}
