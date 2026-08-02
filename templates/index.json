@@ -590,6 +590,7 @@
           "type": "tab",
           "settings": {
             "collection": "soft-treats",
+            "product_background": "shopify://shop_images/Designer_6.png",
             "collection_title": "Best Seller",
             "collection_description": ""
           }
@@ -597,7 +598,8 @@
         "tab_3yk9Qw": {
           "type": "tab",
           "settings": {
-            "collection": "",
+            "collection": "soft-treats",
+            "product_background": "shopify://shop_images/benifit-sec-bg.webp",
             "collection_title": "What's Hot",
             "collection_description": ""
           }
@@ -605,7 +607,8 @@
         "tab_FQVJic": {
           "type": "tab",
           "settings": {
-            "collection": "",
+            "collection": "soft-treats",
+            "product_background": "shopify://shop_images/Designer_5.png",
             "collection_title": "Value Sets",
             "collection_description": ""
           }
