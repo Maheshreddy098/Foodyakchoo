@@ -7,9 +7,8 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
-    
     "home-page": {
       "type": "home-page",
       "blocks": {
@@ -61,21 +60,26 @@
         "text_VYctW8",
         "text_cMNqhQ"
       ],
-      
       "settings": {
         "button_label": "SHOP ALL",
         "button_link": "shopify://collections/all",
-        "background_image": "shopify://shop_images/benifit-sec-bg.webp",
+        "background_image": "shopify://shop_images/Copilot_20260722_142041.png",
         "background_color": "#e2f4fc",
         "content_alignment": "left",
         "heading_color": "#193d71",
         "heading_size": 26,
         "button_bg_color": "#193d71",
         "button_text_color": "#fee000",
+        "fit_to_screen": true,
         "product_scale": 110,
         "wheel_loop": true,
         "wheel_threshold": 160,
-        "wheel_lock_time": 650
+        "wheel_lock_time": 650,
+        "intro_sky": "shopify://shop_images/about-making-bg.webp",
+        "intro_logo": "shopify://shop_images/logo-mob.webp",
+        "left_mountain": "shopify://shop_images/parallax-left-mountain.webp",
+        "right_mountain": "shopify://shop_images/parallax-right-mountain.webp",
+        "bottom_mountain": "shopify://shop_images/parallax-bottom-img.webp"
       }
     },
     "flexible_section_qLGCpK": {
@@ -586,6 +590,7 @@
           "type": "tab",
           "settings": {
             "collection": "soft-treats",
+            "product_background": "shopify://shop_images/Designer_6.png",
             "collection_title": "Best Seller",
             "collection_description": ""
           }
@@ -593,7 +598,8 @@
         "tab_3yk9Qw": {
           "type": "tab",
           "settings": {
-            "collection": "",
+            "collection": "soft-treats",
+            "product_background": "shopify://shop_images/about-making-bg.webp",
             "collection_title": "What's Hot",
             "collection_description": ""
           }
@@ -601,7 +607,8 @@
         "tab_FQVJic": {
           "type": "tab",
           "settings": {
-            "collection": "",
+            "collection": "soft-treats",
+            "product_background": "shopify://shop_images/Designer_5.png",
             "collection_title": "Value Sets",
             "collection_description": ""
           }
@@ -888,14 +895,14 @@
         "subheading_paUKVG": {
           "type": "subheading",
           "settings": {
-            "subheading": "Glow Starts Here",
+            "subheading": "",
             "spacing_bottom": 8
           }
         },
         "heading_dW4HXK": {
           "type": "heading",
           "settings": {
-            "heading": "Find Your Solutions",
+            "heading": "",
             "heading_size": "h2",
             "spacing_bottom": 25
           }
@@ -903,7 +910,7 @@
         "description_p4aPGB": {
           "type": "description",
           "settings": {
-            "description": "I have [title] skin <br> and my top skin concern is [collection]",
+            "description": "",
             "description_size": "22",
             "spacing_bottom": 43
           }
@@ -911,9 +918,9 @@
         "button_46pjh7": {
           "type": "button",
           "settings": {
-            "first_button_label": "See My Solutions",
+            "first_button_label": "",
             "first_button_type": "primary",
-            "second_button_label": "What's my skin type?",
+            "second_button_label": "",
             "second_button_link": "",
             "second_button_type": "link",
             "spacing_bottom": 0
@@ -971,6 +978,7 @@
         "section_width": "full_width",
         "color_scheme": "scheme-4a8d23be-2966-47be-ae10-8cbb3c1181cf",
         "show_collection_image": true,
+        "image": "shopify://shop_images/Copilot_20260709_133837.png",
         "overlay_opacity": 0,
         "image_height": "medium",
         "desktop_content_position": "middle-left",
@@ -1367,6 +1375,7 @@
         "description": "<p>Powered by Anti–Aging Serum for visibly smoother, brighter skin. ☘️</p>",
         "heading_size": "medium",
         "text_alignment": "center",
+        "image": "shopify://shop_images/product-img1.webp",
         "image_ratio": "adapt",
         "button_label": "View Product",
         "button_link": "",
@@ -2093,6 +2102,69 @@
         "padding_bottom": 100,
         "show_divider": false
       }
+    },
+    "certification_tjMgUt": {
+      "type": "certification",
+      "blocks": {
+        "certificate_XqpDRd": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item3-mob.webp"
+          }
+        },
+        "certificate_HiqUxt": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item2-mob.webp"
+          }
+        },
+        "certificate_BftXPa": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item7-mob.webp"
+          }
+        },
+        "certificate_eFxn9D": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item1.webp"
+          }
+        },
+        "certificate_RN8dnX": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item5.webp"
+          }
+        },
+        "certificate_dLByjD": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item6.webp"
+          }
+        },
+        "certificate_Dwrej7": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/certification-item4.webp"
+          }
+        }
+      },
+      "block_order": [
+        "certificate_XqpDRd",
+        "certificate_HiqUxt",
+        "certificate_BftXPa",
+        "certificate_eFxn9D",
+        "certificate_RN8dnX",
+        "certificate_dLByjD",
+        "certificate_Dwrej7"
+      ],
+      "name": "Certification",
+      "settings": {
+        "heading": "Certifications",
+        "heading_alignment": "center",
+        "heading_size": 42,
+        "subheading": ""
+      }
     }
   },
   "order": [
@@ -2114,6 +2186,7 @@
     "image_with_text_BHk7ME",
     "faqs_8y7kPB",
     "scrolling_image_XCJXfG",
-    "icon_box_bxhaa4"
+    "icon_box_bxhaa4",
+    "certification_tjMgUt"
   ]
 }
