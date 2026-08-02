@@ -1094,6 +1094,7 @@
         "testimonial_FBrDba": {
           "type": "testimonial",
           "settings": {
+            "testimonial_image": "shopify://shop_images/Designer_7.png",
             "testimonial_quote": "<em>Shaped by the beauty of the Himalayan landscape, Yakchoo reflects a journey of authenticity, craftsmanship, and a deep respect for nature.</em>"
           }
         }
