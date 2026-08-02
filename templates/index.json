@@ -896,6 +896,7 @@
       "blocks": {
         "subheading_paUKVG": {
           "type": "subheading",
+          "disabled": true,
           "settings": {
             "subheading": "Glow Starts Here",
             "spacing_bottom": 8
@@ -903,6 +904,7 @@
         },
         "heading_dW4HXK": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "heading": "Find Your Solutions",
             "heading_size": "h2",
@@ -911,6 +913,7 @@
         },
         "description_p4aPGB": {
           "type": "description",
+          "disabled": true,
           "settings": {
             "description": "I have [title] skin <br> and my top skin concern is [collection]",
             "description_size": "22",
@@ -919,6 +922,7 @@
         },
         "button_46pjh7": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "first_button_label": "See My Solutions",
             "first_button_type": "primary",
@@ -980,6 +984,7 @@
         "section_width": "full_width",
         "color_scheme": "scheme-4a8d23be-2966-47be-ae10-8cbb3c1181cf",
         "show_collection_image": true,
+        "image": "shopify://shop_images/Copilot_20260709_133837.png",
         "overlay_opacity": 0,
         "image_height": "medium",
         "desktop_content_position": "middle-left",
