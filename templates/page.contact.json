@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "breadcrumb": {
@@ -26,10 +17,15 @@
           "settings": {
             "heading": "{{ page.title }}"
           }
+        },
+        "description_PdnN6k": {
+          "type": "description",
+          "settings": {}
         }
       },
       "block_order": [
-        "heading_cVehNH"
+        "heading_cVehNH",
+        "description_PdnN6k"
       ],
       "settings": {
         "section_width": "fix_width",
@@ -45,7 +41,7 @@
         "image_YVC8HE": {
           "type": "_image",
           "settings": {
-            "image": "shopify://shop_images/Copilot_20260711_124302.png",
+            "image": "",
             "link": "",
             "vertical_alignment": "start",
             "width": "50%"
@@ -188,7 +184,7 @@
         "drawn_underline": true,
         "drawn_underline_type": "squiggle_underline",
         "drawn_underline_color": "#ffb005",
-        "description": "<p>Hi </p><p>My Nama Mahesh and i can assist u with all your Shopify requirements</p><p>I am passionate about Shopify, we would love to assist you</p>",
+        "description": "<p>Please submit all general enquiries in the contact form below and we look </p><p>forward to hearing from you soon.</p>",
         "text_alignment": "center",
         "name": "Name",
         "email_placeholder": "Email",
