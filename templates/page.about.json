@@ -754,6 +754,7 @@
         "testimonial_AKyFmL": {
           "type": "testimonial",
           "settings": {
+            "testimonial_image": "shopify://shop_images/benifit-right-img.webp",
             "testimonial_quote": "Customer satisfaction is our priority. Read the experiences shared by those who chose our brand."
           }
         }
@@ -873,6 +874,7 @@
             "color_scheme": "",
             "vertical_alignment_group": "start",
             "width": "33.333%",
+            "image": "shopify://shop_images/images_3.jpg",
             "link": "",
             "content_position": "bellow",
             "text_alignment": "start",
@@ -918,6 +920,7 @@
             "color_scheme": "",
             "vertical_alignment_group": "start",
             "width": "33.333%",
+            "image": "shopify://shop_images/Copilot_20260709_133834.png",
             "link": "",
             "content_position": "bellow",
             "text_alignment": "start",
@@ -963,6 +966,7 @@
             "color_scheme": "",
             "vertical_alignment_group": "start",
             "width": "33.333%",
+            "image": "shopify://shop_images/Copilot_20260709_132245.png",
             "link": "",
             "content_position": "bellow",
             "text_alignment": "start",
