@@ -1077,9 +1077,17 @@
             "testimonial_quote": "<em>Born in the heart of the Himalayas, Yakchoo celebrates purity, adventure,  and the timeless connection between nature and craftsmanship.</em>"
           }
         },
+        "testimonial_VhVkec": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_image": "shopify://shop_images/Designer_7.png",
+            "testimonial_quote": "You can add text content from press comments, reviews, or testimonials here."
+          }
+        },
         "testimonial_HfLXTN": {
           "type": "testimonial",
           "settings": {
+            "testimonial_image": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
             "testimonial_quote": "High above the clouds, where the Himalayas stand timeless and strong, Yakchoo draws inspiration from nature's purity, resilience, and enduring spirit."
           }
         },
@@ -1092,6 +1100,7 @@
       },
       "block_order": [
         "testimonial_7YexJH",
+        "testimonial_VhVkec",
         "testimonial_HfLXTN",
         "testimonial_FBrDba"
       ],
