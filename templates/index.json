@@ -1073,6 +1073,7 @@
         "testimonial_7YexJH": {
           "type": "testimonial",
           "settings": {
+            "testimonial_image": "shopify://shop_images/Copilot_20260708_174108.png",
             "testimonial_quote": "<em>Born in the heart of the Himalayas, Yakchoo celebrates purity, adventure,  and the timeless connection between nature and craftsmanship.</em>"
           }
         },
@@ -1307,12 +1308,23 @@
     "featured_product_banner_btH9t9": {
       "type": "featured-product-banner",
       "blocks": {
+        "information_EDPnWz": {
+          "type": "information",
+          "settings": {
+            "title": "Icon with text",
+            "highlight_text_size": "",
+            "highlight_text_icon": "brightening",
+            "custom_icon": "shopify://shop_images/benifit-sm-i-4-mob.webp",
+            "uppercase": false
+          }
+        },
         "information_eeNdDm": {
           "type": "information",
           "settings": {
             "title": "Smooths Lines",
             "highlight_text_size": "",
             "highlight_text_icon": "smooth",
+            "custom_icon": "shopify://shop_images/benifit-sm-i-7.webp",
             "uppercase": false
           }
         },
@@ -1322,6 +1334,7 @@
             "title": "Brightens Skin",
             "highlight_text_size": "",
             "highlight_text_icon": "brightening",
+            "custom_icon": "shopify://shop_images/benifit-sm-i-2.webp",
             "uppercase": false
           }
         },
@@ -1331,6 +1344,7 @@
             "title": "Collagen Boost",
             "highlight_text_size": "",
             "highlight_text_icon": "droplet",
+            "custom_icon": "shopify://shop_images/benifit-sm-i-6.webp",
             "uppercase": false
           }
         },
@@ -1340,6 +1354,7 @@
             "title": "48h Hydration ",
             "highlight_text_size": "",
             "highlight_text_icon": "hydration",
+            "custom_icon": "shopify://shop_images/benifit-sm-i-5.webp",
             "uppercase": false
           }
         },
@@ -1349,6 +1364,7 @@
             "title": "Anti-Aging Shield",
             "highlight_text_size": "",
             "highlight_text_icon": "shield",
+            "custom_icon": "shopify://shop_images/benifit-sm-i-1.webp",
             "uppercase": false
           }
         },
@@ -1358,11 +1374,13 @@
             "title": "Fast Absorption",
             "highlight_text_size": "",
             "highlight_text_icon": "coptic_cross",
+            "custom_icon": "shopify://shop_images/benifit-sm-i-3.webp",
             "uppercase": false
           }
         }
       },
       "block_order": [
+        "information_EDPnWz",
         "information_eeNdDm",
         "information_ABacRE",
         "information_43hNxD",
@@ -1382,6 +1400,7 @@
         "description": "<p>Powered by Anti–Aging Serum for visibly smoother, brighter skin. ☘️</p>",
         "heading_size": "medium",
         "text_alignment": "center",
+        "image": "shopify://shop_images/product-img1.webp",
         "image_ratio": "adapt",
         "button_label": "View Product",
         "button_link": "",
