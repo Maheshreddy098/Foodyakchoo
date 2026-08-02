@@ -1416,7 +1416,9 @@
       "blocks": {
         "group_image_card_eMGaja": {
           "type": "_group-image-card",
-          "settings": {},
+          "settings": {
+            "image": "shopify://shop_images/Dogsee_Multiflavor_Peanut_1_LB-L.webp"
+          },
           "blocks": {
             "highlight_text_MDHfTL": {
               "type": "highlight-text",
@@ -1477,7 +1479,9 @@
         },
         "group_image_card_7ddEja": {
           "type": "_group-image-card",
-          "settings": {},
+          "settings": {
+            "image": "shopify://shop_images/images_8.jpg"
+          },
           "blocks": {
             "highlight_text_zzHKrH": {
               "type": "highlight-text",
@@ -1708,14 +1712,14 @@
           "type": "step",
           "settings": {
             "step_title": "Step 1. Cleanser",
-            "step_product": ""
+            "step_product": "asset-pack-68500094978-example-product-3"
           }
         },
         "step_cbLTR4": {
           "type": "step",
           "settings": {
             "step_title": "Step 2. Toner",
-            "step_product": ""
+            "step_product": "asset-pack-68500094978-example-product-2"
           }
         },
         "step_y7EBpp": {
@@ -1725,11 +1729,18 @@
             "step_product": ""
           }
         },
+        "step_qcgTtx": {
+          "type": "step",
+          "settings": {
+            "step_title": "Step Title",
+            "step_product": "mini-pops"
+          }
+        },
         "step_87zY8W": {
           "type": "step",
           "settings": {
             "step_title": "Step 4. Treatment",
-            "step_product": ""
+            "step_product": "puffies"
           }
         }
       },
@@ -1737,6 +1748,7 @@
         "step_Bmh3GP",
         "step_cbLTR4",
         "step_y7EBpp",
+        "step_qcgTtx",
         "step_87zY8W"
       ],
       "name": "t:sections.routine-builder.name",
