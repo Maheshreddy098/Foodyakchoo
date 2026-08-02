@@ -1781,24 +1781,28 @@
         "image_TxQnHc": {
           "type": "image",
           "settings": {
+            "image_block": "shopify://shop_images/Designer_7.png",
             "link_image": ""
           }
         },
         "image_LycX9K": {
           "type": "image",
           "settings": {
+            "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
             "link_image": ""
           }
         },
         "image_kde4Gb": {
           "type": "image",
           "settings": {
+            "image_block": "shopify://shop_images/Designer_7.png",
             "link_image": ""
           }
         },
         "image_8y7NTi": {
           "type": "image",
           "settings": {
+            "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
             "link_image": ""
           }
         }
@@ -1902,6 +1906,7 @@
       "settings": {
         "section_width": "fix_width",
         "color_scheme": "",
+        "image": "shopify://shop_images/product-img3.webp",
         "desktop_image_width": 50,
         "image_desktop_position": "left",
         "background_type": "color",
