@@ -168,24 +168,24 @@
           "type": "icon_box",
           "settings": {
             "icon_svg": "cruelty",
-            "heading": "Cruelty-Free",
-            "description": "<p>We're cruelty-free, always and forever, because we believe compassion is the true beauty.</p>"
+            "heading": "Where Nature Meets Heritage",
+            "description": "<p>Yakchoo draws inspiration from the pristine Himalayan ranges, embracing the values of authenticity, purity, and craftsmanship.<br/><br/></p>"
           }
         },
         "icon_box_kk66Cd": {
           "type": "icon_box",
           "settings": {
             "icon_svg": "paraben",
-            "heading": "Paraben-Free",
-            "description": "<p>Products paraben-free, always and forever, because we believe in clean, safe beauty for all.</p>"
+            "heading": "Explore Yakchoo",
+            "description": "<p>Every detail reflects the strength of the mountains and the timeless beauty of nature.<br/><br/></p>"
           }
         },
         "icon_box_jACmYr": {
           "type": "icon_box",
           "settings": {
             "icon_svg": "leaf",
-            "heading": "Earth-Conscious",
-            "description": "<p>Our commitment to the planet is present in every step of our product's journey and process.</p>"
+            "heading": "Rooted in Himalayan Heritage",
+            "description": "<p>Born from the heart of the Himalayas, Yakchoo is a celebration of mountain traditions, natural beauty, and exceptional quality.<br/><br/></p>"
           }
         }
       },
@@ -377,6 +377,7 @@
           "type": "_image",
           "name": "t:sections.all.image.label",
           "settings": {
+            "image": "shopify://shop_images/about-right-mountain.webp",
             "link": "",
             "vertical_alignment": "start",
             "width": "50%"
