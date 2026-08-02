@@ -24,14 +24,17 @@
       "blocks": {
         "breadcrumb_WjiDGb": {
           "type": "breadcrumb",
+          "disabled": true,
           "settings": {}
         },
         "heading_ARdf83": {
           "type": "heading",
+          "disabled": true,
           "settings": {}
         },
         "description_EYQpmH": {
           "type": "description",
+          "disabled": true,
           "settings": {}
         }
       },
@@ -43,6 +46,7 @@
       "settings": {
         "section_width": "full_width",
         "color_scheme": "scheme-b057792d-f0df-4ed0-973f-3dd88bca67d5",
+        "image": "shopify://shop_images/Copilot_20260709_132634.png",
         "use_collection_image": true,
         "image_opacity": 20,
         "image_height": "adapt",
@@ -134,8 +138,9 @@
         "show_view_all_button": false,
         "view_all_button_label": "View all product",
         "btn_type": "link",
-        "collection": "",
-        "items_to_show": 4,
+        "collection": "6-products",
+        "product_background": "shopify://shop_images/about-making-bg.webp",
+        "feat_items_to_show": 8,
         "items_per_row": 4,
         "column_gap": "medium",
         "enable_carousel": false,
