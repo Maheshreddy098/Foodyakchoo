@@ -63,7 +63,7 @@
       "settings": {
         "button_label": "SHOP ALL",
         "button_link": "shopify://collections/all",
-        "background_image": "shopify://shop_images/benifit-sec-bg.webp",
+        "background_image": "shopify://shop_images/Copilot_20260722_142041.png",
         "background_color": "#e2f4fc",
         "content_alignment": "left",
         "heading_color": "#193d71",
@@ -134,7 +134,6 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
-                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -282,7 +281,6 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
-                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -356,7 +354,6 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
-                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -430,7 +427,6 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
-                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -504,7 +500,6 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
-                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
