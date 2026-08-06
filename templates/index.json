@@ -75,9 +75,9 @@
         "wheel_loop": true,
         "wheel_threshold": 160,
         "wheel_lock_time": 650,
-        "intro_sky": "shopify://shop_images/benifit-sec-bg.webp",
-        "intro_logo": "shopify://shop_images/logo-mob.webp",
-        "left_mountain": "shopify://shop_images/parallax-left-mountain.webp",
+        "intro_sky": "shopify://shop_images/banner-bg.webp",
+        "intro_logo": "shopify://shop_images/logo.webp",
+        "left_mountain": "shopify://shop_images/parallax-left-mountain-mob.webp",
         "right_mountain": "shopify://shop_images/parallax-right-mountain.webp",
         "bottom_mountain": "shopify://shop_images/parallax-bottom-img.webp"
       }
@@ -140,7 +140,6 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
-                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -288,7 +287,6 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
-                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -362,7 +360,6 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
-                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -436,7 +433,6 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
-                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -510,7 +506,6 @@
                   "settings": {
                     "link_image": "",
                     "open_in_new_tab": false,
-                    "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
                     "icon_svg": "none",
                     "image_width": 55,
                     "image_width_mb": 55
@@ -599,7 +594,6 @@
           "type": "tab",
           "settings": {
             "collection": "soft-treats",
-            "product_background": "shopify://shop_images/benifit-sec-bg.webp",
             "collection_title": "What's Hot",
             "collection_description": ""
           }
@@ -658,7 +652,6 @@
               "type": "_collection-item",
               "settings": {
                 "collection": "",
-                "collection_image": "shopify://shop_images/Dogsee-bars-peanut-M.jpg",
                 "collection_title": "Yak Chews"
               },
               "blocks": {}
@@ -667,7 +660,6 @@
               "type": "_collection-item",
               "settings": {
                 "collection": "",
-                "collection_image": "shopify://shop_images/image_-_2026-04-24T152033.169_51102abd-cb22-483b-8486-593d9515b76a.webp",
                 "collection_title": "100% Natural"
               },
               "blocks": {}
@@ -984,7 +976,6 @@
         "section_width": "full_width",
         "color_scheme": "scheme-4a8d23be-2966-47be-ae10-8cbb3c1181cf",
         "show_collection_image": true,
-        "image": "shopify://shop_images/Copilot_20260709_133837.png",
         "overlay_opacity": 0,
         "image_height": "medium",
         "desktop_content_position": "middle-left",
@@ -1087,7 +1078,6 @@
         "testimonial_HfLXTN": {
           "type": "testimonial",
           "settings": {
-            "testimonial_image": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
             "testimonial_quote": "High above the clouds, where the Himalayas stand timeless and strong, Yakchoo draws inspiration from nature's purity, resilience, and enduring spirit."
           }
         },
@@ -1324,7 +1314,6 @@
             "title": "Icon with text",
             "highlight_text_size": "",
             "highlight_text_icon": "brightening",
-            "custom_icon": "shopify://shop_images/benifit-sm-i-4-mob.webp",
             "uppercase": false
           }
         },
@@ -1334,7 +1323,6 @@
             "title": "Smooths Lines",
             "highlight_text_size": "",
             "highlight_text_icon": "smooth",
-            "custom_icon": "shopify://shop_images/benifit-sm-i-7.webp",
             "uppercase": false
           }
         },
@@ -1344,7 +1332,6 @@
             "title": "Brightens Skin",
             "highlight_text_size": "",
             "highlight_text_icon": "brightening",
-            "custom_icon": "shopify://shop_images/benifit-sm-i-2.webp",
             "uppercase": false
           }
         },
@@ -1354,7 +1341,6 @@
             "title": "Collagen Boost",
             "highlight_text_size": "",
             "highlight_text_icon": "droplet",
-            "custom_icon": "shopify://shop_images/benifit-sm-i-6.webp",
             "uppercase": false
           }
         },
@@ -1364,7 +1350,6 @@
             "title": "48h Hydration ",
             "highlight_text_size": "",
             "highlight_text_icon": "hydration",
-            "custom_icon": "shopify://shop_images/benifit-sm-i-5.webp",
             "uppercase": false
           }
         },
@@ -1374,7 +1359,6 @@
             "title": "Anti-Aging Shield",
             "highlight_text_size": "",
             "highlight_text_icon": "shield",
-            "custom_icon": "shopify://shop_images/benifit-sm-i-1.webp",
             "uppercase": false
           }
         },
@@ -1384,7 +1368,6 @@
             "title": "Fast Absorption",
             "highlight_text_size": "",
             "highlight_text_icon": "coptic_cross",
-            "custom_icon": "shopify://shop_images/benifit-sm-i-3.webp",
             "uppercase": false
           }
         }
@@ -1426,9 +1409,7 @@
       "blocks": {
         "group_image_card_eMGaja": {
           "type": "_group-image-card",
-          "settings": {
-            "image": "shopify://shop_images/Dogsee_Multiflavor_Peanut_1_LB-L.webp"
-          },
+          "settings": {},
           "blocks": {
             "highlight_text_MDHfTL": {
               "type": "highlight-text",
@@ -1489,9 +1470,7 @@
         },
         "group_image_card_7ddEja": {
           "type": "_group-image-card",
-          "settings": {
-            "image": "shopify://shop_images/images_8.jpg"
-          },
+          "settings": {},
           "blocks": {
             "highlight_text_zzHKrH": {
               "type": "highlight-text",
@@ -1798,7 +1777,6 @@
         "image_LycX9K": {
           "type": "image",
           "settings": {
-            "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
             "link_image": ""
           }
         },
@@ -1812,7 +1790,6 @@
         "image_8y7NTi": {
           "type": "image",
           "settings": {
-            "image_block": "shopify://shop_images/Copilot_20260708_174108_1e71fadd-3702-4090-8a47-519c9a76deec.png",
             "link_image": ""
           }
         }
@@ -1916,7 +1893,6 @@
       "settings": {
         "section_width": "fix_width",
         "color_scheme": "",
-        "image": "shopify://shop_images/product-img3.webp",
         "desktop_image_width": 50,
         "image_desktop_position": "left",
         "background_type": "color",
